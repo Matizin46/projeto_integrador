@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff;
+  }
+  
+  .top-bar {
+    background: linear-gradient(to right, #ff0000, #ffcc00);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .top-bar h1 {
+    font-size: 24px;
+  }
+  
+  .top-bar input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    width: 60%;
+  }
+  
+  .categorias {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+    background: #f8f8f8;
+  }
+  
+  .categorias button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #ffcc00;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  
+  .carrossel {
+    margin: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #ffeeb0;
+    border-radius: 12px;
+  }
+  
+  .slide {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .slide.ativo {
+    display: block;
+  }
+  
+  .resultados {
+    padding: 20px;
+  }
+  
+  .resultados h2 {
+    margin-bottom: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    padding: 15px;
+    border-radius: 12px;
+    background: #f3f3f3;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
