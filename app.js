@@ -1,36 +1,49 @@
 function realizarLogin() {
-    alert("Função de login aqui...");
-    // Aqui você pode fazer um fetch real para validar com sua API
-  }
-  
-  function realizarCadastro() {
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-  
-    const body = {
-      nome,
-      cpf: '00000000000', // pode ajustar ou permitir campo visível
-      email,
-      telefone: '',
-      endereco: '',
-      tipo: 'Cliente',
-      planoId: null,
-      senhaHash: senha
-    };
-  
-    fetch('http://localhost:5000/api/users/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    })
-      .then(res => {
-        if (res.ok) alert("Cadastro realizado com sucesso!");
-        else alert("Erro ao cadastrar.");
-      })
-      .catch(err => {
-        console.error(err);
-        alert("Erro de conexão.");
-      });
-  }
-  
+  alert("Função de login aqui...");
+}
+
+// Validação visual e simulação de cadastro
+document.addEventListener('DOMContentLoaded', () => {
+  const cadastrarBtn = document.getElementById('cadastrarBtn');
+
+  cadastrarBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome');
+    const email = document.getElementById('email');
+    const senha = document.getElementById('senha');
+
+    const erroNome = document.getElementById('erro-nome');
+    const erroEmail = document.getElementById('erro-email');
+    const erroSenha = document.getElementById('erro-senha');
+
+    erroNome.textContent = '';
+    erroEmail.textContent = '';
+    erroSenha.textContent = '';
+
+    let valido = true;
+
+    if (!nome.value.trim()) {
+      erroNome.textContent = 'Por favor, preencha o nome.';
+      valido = false;
+    }
+
+    if (!email.value.trim()) {
+      erroEmail.textContent = 'Por favor, preencha o email.';
+      valido = false;
+    }
+
+    if (!senha.value.trim()) {
+      erroSenha.textContent = 'Por favor, preencha a senha.';
+      valido = false;
+    } else if (senha.value.length < 6) {
+      erroSenha.textContent = 'A senha deve ter no mínimo 6 caracteres.';
+      valido = false;
+    }
+
+    if (valido) {
+      alert("Cadastro realizado com sucesso!");
+      window.location.href = "home.html"; // Redireciona para a próxima página
+    }
+  });
+});

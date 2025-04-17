@@ -88,4 +88,28 @@ body {
     background: #f3f3f3;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   }
+
+  /* container da busca + engrenagem */
+.search-settings {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 65%;
+}
+
+/* ícone ⚙️ */
+.config-icon {
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #ff9900;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.config-icon:hover {
+  background-color: #ff6600;
+}
+
   

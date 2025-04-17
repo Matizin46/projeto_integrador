@@ -1,95 +1,110 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  body {
-    height: 100vh;
-    display: flex;
-  }
-  
-  .left-panel {
-    width: 50%;
-    background: linear-gradient(to bottom, #ff0000, #ff9900, #ffcc00);
-    color: white;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-  
-  .left-panel h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .left-panel p {
-    margin-bottom: 30px;
-  }
-  
-  .left-panel button {
-    background: transparent;
-    border: 2px solid white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .right-panel {
-    width: 50%;
-    background: #fff;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .right-panel h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #ff0000, #ffcc00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .right-panel p {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  
-  .form-field {
-    display: flex;
-    align-items: center;
-    background: #f2f2f2;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  .form-field input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    outline: none;
-    font-size: 16px;
-  }
-  
-  .right-panel button {
-    background: linear-gradient(to right, #ff0000, #ffcc00);
-    border: none;
-    padding: 12px;
-    border-radius: 30px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+}
+
+.left-panel {
+  width: 50%;
+  background: linear-gradient(to bottom, #ff0000, #ff9900, #ffcc00);
+  color: white;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.left-panel h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.left-panel p {
+  margin-bottom: 30px;
+}
+
+.left-panel button {
+  background: transparent;
+  border: 2px solid white;
+  padding: 10px 30px;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.right-panel {
+  width: 50%;
+  background: #fff;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #ff0000, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.right-panel p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f2;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.form-field input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+}
+
+.button {
+  background: linear-gradient(to right, #ff0000, #ffcc00);
+  border: none;
+  padding: 14px 40px;
+  border-radius: 999px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-self: center;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+}
+
+.button:hover {
+  transform: scale(1.03);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

@@ -9,7 +9,7 @@ function mostrarProximoSlide() {
 
 setInterval(mostrarProximoSlide, 3000);
 
-// busca (mock)
+// Busca (mock)
 document.getElementById("busca").addEventListener("input", function () {
   const termo = this.value.toLowerCase();
   const cards = document.querySelectorAll(".card");
@@ -18,4 +18,9 @@ document.getElementById("busca").addEventListener("input", function () {
     const nome = card.querySelector("h3").textContent.toLowerCase();
     card.style.display = nome.includes(termo) ? "block" : "none";
   });
+});
+
+// Botão de configurações redireciona para configuracao.html
+document.getElementById("btn-config").addEventListener("click", function () {
+  window.location.href = "configuracao.html";
 });
