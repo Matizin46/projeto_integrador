@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estetique - Login Fornecedor e Consumidor</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="login.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="painel-esquerdo">
+      <h1>Estetique</h1>
+      <p>Bem-vindo(a) ao portal</p>
+      <div class="tabs">
+        <button class="tab ativo" onclick="mostrarLogin('fornecedor')">Sou Fornecedor</button>
+        <button class="tab" onclick="mostrarLogin('consumidor')">Sou Consumidor</button>
+      </div>
+    </div>
+
+    <div class="painel-direito">
+      <div id="form-fornecedor" class="formulario ativo">
+        <h2>Login Fornecedor</h2>
+        <input type="text" placeholder="Usuário ou E-mail">
+        <input type="password" placeholder="Senha">
+        <button>Entrar</button>
+        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="#">Primeiro acesso? Faça seu cadastro</a></p>
+      </div>
+
+      <div id="form-consumidor" class="formulario">
+        <h2>Login Consumidor</h2>
+        <input type="text" placeholder="Usuário ou E-mail">
+        <input type="password" placeholder="Senha">
+        <button>Entrar</button>
+        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="#">Primeiro acesso? Faça seu cadastro</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

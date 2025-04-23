@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .painel-esquerdo {
+    flex: 1;
+    background: linear-gradient(to bottom, #ff0000, #ff9900, #ffcc00);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  
+  .painel-esquerdo h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .painel-esquerdo p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .tabs button {
+    background: white;
+    border: none;
+    color: #ff0000;
+    padding: 10px 25px;
+    margin: 5px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .tabs button.ativo {
+    background: #ff0000;
+    color: white;
+  }
+  
+  .painel-direito {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .formulario {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .formulario.ativo {
+    display: flex;
+  }
+  
+  .formulario h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .formulario input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .formulario button {
+    background: linear-gradient(to right, #ff0000, #ffcc00);
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .link {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .link a {
+    text-decoration: none;
+    color: #ff0000;
+  }
+  
+  .formulario {
+    display: none;
+  }
+  
+  .formulario.ativo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tab.ativo {
+    background: #ff0000;
+    color: white;
+  }
