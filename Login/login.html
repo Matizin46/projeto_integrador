@@ -19,21 +19,21 @@
     </div>
 
     <div class="painel-direito">
-      <div id="form-fornecedor" class="formulario ativo">
+      <form id="form-fornecedor" class="formulario ativo" action="../configuracao/configuracao.html" method="post">
         <h2>Login Fornecedor</h2>
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
-        <button>Entrar</button>
-        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="#">Primeiro acesso? Faça seu cadastro</a></p>
-      </div>
+        <button type="submit">Entrar</button>
+        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="../fornecedor/fornecedor.html">Primeiro acesso? Faça seu cadastro</a></p>
+      </form>
 
-      <div id="form-consumidor" class="formulario">
+      <form id="form-consumidor" class="formulario" action="../Home/home.html" method="post">
         <h2>Login Consumidor</h2>
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button>Entrar</button>
-        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="#">Primeiro acesso? Faça seu cadastro</a></p>
-      </div>
+        <p class="link"><a href="#">Esqueci minha senha</a> | <a href="../conssumidor/conssumidor.html">Primeiro acesso? Faça seu cadastro</a></p>
+      </form>
     </div>
   </div>
 </body>
