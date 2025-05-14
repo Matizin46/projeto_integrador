@@ -23,7 +23,7 @@ body {
 
 .painel-esquerdo {
   flex: 1;
-  background: linear-gradient(to bottom, #ff0000, #ff9900, #ffee00);
+  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
   color: white;
   padding: 50px 30px;
   text-align: center;
@@ -71,7 +71,7 @@ body {
   font-size: 24px;
   font-weight: bold;
   color: #ff0000;
-  background: linear-gradient(to right, #ff0000, #ffee00);
+  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -86,7 +86,7 @@ body {
 }
 
 .formulario button {
-  background: linear-gradient(to right, #ff0000, #ffcc00);
+  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
   border: none;
   padding: 14px;
   color: white;

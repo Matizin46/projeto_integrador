@@ -5,7 +5,7 @@ body {
   }
   
   .top-bar {
-    background: linear-gradient(to right, #ff0000, #ffcc00);
+    background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
     padding: 20px;
     display: flex;
     justify-content: space-between;

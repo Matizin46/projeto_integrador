@@ -11,7 +11,7 @@ body {
   .left-panel {
     width: 400px;
     padding: 40px;
-    background: linear-gradient(to bottom, #ff0000, #ff9900, #ffcc00);
+    background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
     color: white;
     border-radius: 12px;
     text-align: center;

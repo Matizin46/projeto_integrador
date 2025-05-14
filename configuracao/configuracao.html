@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Estetique - Configurações e Planos</title>
-  <link rel="stylesheet" href="configuracoes.css">
-  <script src="js/planos.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estetique - Configurações</title>
+  <link rel="stylesheet" href="configuracoes.css"/>
 </head>
+
 <body>
   <div class="header">Estetique ⚙️</div>
 
   <div class="section">
     <h2>Configurações</h2>
-    <div class="option"><span>👤 Nome</span> <span>Editar perfil</span></div>
-    <div class="option"><span>💬 Chats</span> <span>Minhas conversas</span></div>
-    <div class="option"><span>🔔 Notificações</span> <span>Minha central de notificações</span></div>
-    <div class="option"><span>🎁 Cupons</span> <span>Meus cupons de desconto</span></div>
-    <div class="option"><span>❤️ Favoritos</span> <span>Locais favoritos</span></div>
-    <div class="option"><span>💳 Pagamento</span> <span>Minhas formas de pagamento</span></div>
+    <div class="option" onclick="mostrarConteudo('perfil')">👤 Nome <span>Editar perfil</span></div>
+    <div class="option" onclick="mostrarConteudo('chats')">💬 Chats <span>Minhas conversas</span></div>
+    <div class="option" onclick="mostrarConteudo('notificacoes')">🔔 Notificações <span>Minha central</span></div>
+    <div class="option" onclick="mostrarConteudo('cupons')">🎁 Cupons <span>Meus cupons</span></div>
+    <div class="option" onclick="mostrarConteudo('favoritos')">❤️ Favoritos <span>Locais favoritos</span></div>
+    <div class="option" onclick="mostrarConteudo('pagamento')">💳 Pagamento <span>Formas de pagamento</span></div>
   </div>
 
   <div class="section">
@@ -60,6 +61,24 @@
       </div>
     </div>
   </div>
-  <script src="js/navegacao.js" defer></script>
+
+  <!-- ✅ Container onde o conteúdo dinâmico será inserido -->
+  <div id="conteudo-dinamico" class="section"></div>
+
+  <script src="planos.js"></script>
 </body>
+
+</html>
+
+
+<div id="conteudo-dinamico" class="conteudo"></div>
+
+<div class="voltar" onclick="voltarPagina()">
+  ← Voltar
+</div>
+
+
+<script src="planos.js"></script>
+</body>
+
 </html>
