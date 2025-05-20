@@ -136,3 +136,64 @@ function adicionarCupom(event) {
 function voltarPagina() {
   window.history.back(); // Volta para a página anterior no histórico do navegador
 }
+
+function adquirirPlano(planoId) {
+  // Mostra a aba de pagamento diretamente
+  mostrarConteudo('pagamento');
+
+  // Opcional: você pode exibir o plano escolhido na aba pagamento
+  const container = document.getElementById("conteudo-dinamico");
+  const planoSelecionado = document.createElement('p');
+  planoSelecionado.style.marginTop = "15px";
+  planoSelecionado.style.fontWeight = "bold";
+  planoSelecionado.style.color = "#ff0000";
+  planoSelecionado.innerText = `Plano selecionado: ${planoId === 1 ? 'BÁSICO' : planoId === 2 ? 'AVANÇADO' : 'PREMIUM'}`;
+
+  container.appendChild(planoSelecionado);
+}
+function alternarAba(abaId) {
+  // Remove a classe "active" de todas as abas e conteúdos
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.aba-conteudo').forEach(div => div.classList.remove('active'));
+
+  // Ativa a aba e conteúdo correspondente ao ID passado
+  document.querySelector(`.tab[onclick*="${abaId}"]`).classList.add('active');
+  document.getElementById(abaId).classList.add('active');
+}
+
+
+function salvarPerfil(event) {
+  event.preventDefault(); // Evita o recarregamento da página ao enviar o formulário
+
+  // Coleta os valores dos campos do formulário
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const email = document.getElementById("email").value;
+  const endereco = document.getElementById("endereco").value;
+
+  // Aqui seria onde você salva no backend ou localStorage
+  alert(`Perfil salvo!\n\nNome: ${nome}\nTelefone: ${telefone}\nEmail: ${email}\nEndereço: ${endereco}`);
+}
+
+
+function adicionarCupom(event) {
+  event.preventDefault(); // Evita o reload do form
+
+  const cupom = document.getElementById("codigo-cupom").value.trim().toUpperCase();
+  const resultado = document.getElementById("cupom-resultado");
+
+  // Verifica se o campo está vazio
+  if (cupom === "") {
+      resultado.innerHTML = `<p style="color: red;">Por favor, digite um código de cupom válido.</p>`;
+      return;
+  }
+
+  // Simula a aceitação do cupom e exibe o resultado
+  resultado.innerHTML = `<p style="color: green;">Cupom <strong>${cupom}</strong> adicionado com sucesso! 🎉</p>`;
+  document.getElementById("form-cupom").reset(); // Limpa o campo do formulário
+}
+
+
+function voltarPagina() {
+  window.history.back(); // Volta para a página anterior no histórico do navegador
+}
