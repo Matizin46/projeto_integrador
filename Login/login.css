@@ -23,17 +23,20 @@ body {
 
 .painel-esquerdo {
   flex: 1;
-  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
+  
   color: white;
   padding: 50px 30px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url('fotos.png');
+  background-size: cover;
+  background-position: -20px;
 }
 
 .painel-esquerdo h1 {
-  font-size: 38px;
+  font-size: 50px;
   margin-bottom: 16px;
   font-weight: bold;
 }
@@ -51,7 +54,13 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: #ffffff;
+  color: #ffffff;
+  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+  
+  
+
+  
+ 
 }
 
 .formulario {
@@ -64,14 +73,16 @@ body {
 .formulario.ativo {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .formulario h2 {
   margin-bottom: 12px;
   font-size: 24px;
   font-weight: bold;
-  color: #ff0000;
-  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
+  text-align: center;
+  background: white;
+  color: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -86,7 +97,7 @@ body {
 }
 
 .formulario button {
-  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
+  background: linear-gradient(to right, #67086F, #700979, #C50FD5);
   border: none;
   padding: 14px;
   color: white;
@@ -95,6 +106,13 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 0 10px black;
 }
 
 .formulario button:hover {
@@ -105,12 +123,18 @@ body {
   font-size: 13px;
   text-align: center;
   color: #888;
+  margin-top: 10px;
 }
 
 .link a {
   text-decoration: none;
-  color: #ff0000;
+  color: black;
   font-weight: bold;
+  color: white;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+    text-decoration: underline;
 }
 
 .tab.ativo {
@@ -128,4 +152,16 @@ body {
   border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.titulo {
+  font-size: 150px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+    
 }
