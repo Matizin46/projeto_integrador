@@ -22,5 +22,5 @@ document.getElementById("busca").addEventListener("input", function () {
 
 // Botão de configurações redireciona para configuracao.html
 document.getElementById("btn-config").addEventListener("click", function () {
-  window.location.href = "configuracao.html";
+  window.location.href = encodeURI("configuracao/configuracao.html");
 });

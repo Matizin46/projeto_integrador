@@ -1,0 +1,179 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.header {
+    padding: 20px;
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    padding: 20px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.option {
+    background: #fff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.option:hover {
+    background: #f0f0f0;
+}
+
+.conteudo {
+    padding: 20px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para abas e métodos de pagamento */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab.active {
+    color: #67086F;
+    border-bottom: 2px solid #67086F;
+}
+
+.metodo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.metodo img {
+    width: 36px;
+    height: auto;
+}
+
+.btn-vermelho {
+    width: 100%;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.aba-conteudo {
+    display: none;
+}
+
+.aba-conteudo.active {
+    display: block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form label {
+    font-weight: 600;
+    color: #555;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#form-cupom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#form-cupom input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.btn-vermelho {
+    background-color: #875fb6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-vermelho:hover {
+    background-color: #C50FD5;
+}
+
+.voltar{
+    position: fixed;
+    top:10px;
+    left:20px;
+    background-color: #d62828;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+    z-index: 1000;
+  }
+
+.voltar:hover {
+    background-color: #a31c1c;
+}

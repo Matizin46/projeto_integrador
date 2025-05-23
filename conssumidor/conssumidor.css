@@ -24,7 +24,7 @@ body {
   .form-container h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #ff0000;
+    color: #2752c9;
   }
   
   form {
@@ -42,7 +42,7 @@ body {
   
   form button {
     padding: 12px;
-    background: linear-gradient(to right, #ff0000, #ffcc00);
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
     color: white;
     border: none;
     font-weight: bold;
