@@ -6,7 +6,7 @@ body {
   
   .header {
     padding: 20px;
-    background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
     color: white;
     font-weight: bold;
     font-size: 24px;
@@ -72,7 +72,7 @@ body {
   }
   
   .plano button {
-    background: linear-gradient(to right, #700979, #7B00FF);
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
     border: none;
     padding: 10px 20px;
     border-radius: 30px;
@@ -82,7 +82,7 @@ body {
   }
   
   .btn-vermelho {
-    background-color: #875fb6;
+    background-color: #C50FD5;
     color: white;
     padding: 12px;
     border: none;
@@ -93,7 +93,7 @@ body {
 }
 
 .btn-vermelho:hover {
-    background-color: #493c7b;
+    background-color: #67086F;
 }
 
 .voltar{
@@ -124,7 +124,7 @@ body {
 
 .header {
   padding: 20px;
-  background: linear-gradient(to right, #1A0024, #700979, #7B00FF);
+  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
   color: white;
   font-weight: bold;
   font-size: 24px;
@@ -188,8 +188,8 @@ body {
 }
 
 .tab.active {
-  color: #700979;
-  border-bottom: 2px solid #700979;
+  color: #67086F;
+  border-bottom: 2px solid #67086F;
 }
 
 .metodo {
