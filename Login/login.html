@@ -6,6 +6,7 @@
   <title>Estetique - Login Fornecedor e Consumidor</title>
   <link rel="stylesheet" href="login.css">
   <script src="login.js" defer></script>
+  <script src="senha.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -27,7 +28,8 @@
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button type="submit">Entrar</button>
-        <p class="link"><a href="#">Esqueci minha senha</a> <br> <a href="../fornecedor/fornecedor.html">Primeiro acesso? Faça seu cadastro</a></p>
+        <p class="link">
+          <a href="#" id="esqueci-fornecedor">Esqueci minha senha</a><br /> <a href="../fornecedor/fornecedor.html">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
 
       <form id="form-consumidor" class="formulario" action="../Home/home.html" method="post">
@@ -35,8 +37,10 @@
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button>Entrar</button>
-        <p class="link"><a href="#">Esqueci minha senha</a> <br> <a href="../conssumidor/conssumidor.html">Primeiro acesso? Faça seu cadastro</a></p>
+        <p class="link">
+          <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../conssumidor/conssumidor.html">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
+   
     </div>
   </div>
 </body>

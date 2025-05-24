@@ -1,14 +1,13 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #fff;
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
   }
   
   .cadastro-consumidor {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
     min-height: 100vh;
   }
   
@@ -42,7 +41,7 @@ body {
   
   form button {
     padding: 12px;
-    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+    background: #4F61BD;
     color: white;
     border: none;
     font-weight: bold;
@@ -54,5 +53,21 @@ body {
   
   form button:hover {
     opacity: 0.9;
+  }
+
+  .voltar{
+    position: fixed;
+    top:10px;
+    left:20px;
+    background-color: #d62828;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+    z-index: 1000;
   }
   

@@ -97,7 +97,7 @@ body {
 }
 
 .formulario button {
-  background: linear-gradient(to right, #67086F, #700979, #C50FD5);
+  background: #4F61BD;
   border: none;
   padding: 14px;
   color: white;
@@ -165,3 +165,50 @@ body {
     text-shadow: 0 0 10px black;
     
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-conteudo {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-conteudo input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+}
+
+.modal-conteudo button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-conteudo .fechar {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
