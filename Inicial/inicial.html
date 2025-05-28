@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Estetique - Gerenciar Banners</title>
+  <link rel="stylesheet" href="admin-banners.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>🎨 Estetique - Gerenciar Banners</h1>
+  </header>
+
+  <main class="painel">
+    <h2>Meus Banners</h2>
+
+    <div class="carrossel">
+      <button class="seta esquerda" id="btnAnterior">&#10094;</button>
+
+      <div class="slide-container">
+        <div class="slide ativo">
+          <img src="banner1.png" alt="Banner Corte Masculino">
+          <p>Corte Masculino</p>
+        </div>
+        <div class="slide">
+          <img src="banner2.png" alt="Banner Sobrancelha">
+          <p>Design de Sobrancelha</p>
+        </div>
+        <div class="slide">
+          <img src="banner1.png" alt="Banner Maquiagem">
+          <p>Maquiagem Profissional</p>
+        </div>
+      </div>
+
+      <button class="seta direita" id="btnProximo">&#10095;</button>
+    </div>
+  </main>
+
+  <script src="admin-banners.js"></script>
+</body>
+</html>

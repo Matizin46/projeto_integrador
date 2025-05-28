@@ -177,3 +177,7 @@ form input {
 .voltar:hover {
     background-color: #a31c1c;
 }
+
+#conteudo-dinamico:empty {
+    display: none;
+  }

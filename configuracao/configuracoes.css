@@ -260,3 +260,7 @@ form input {
   border: 1px solid #ccc;
   font-size: 16px;
 }
+
+#conteudo-dinamico:empty {
+  display: none;
+}
