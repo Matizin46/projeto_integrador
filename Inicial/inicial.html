@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Estetique - Gerenciar Banners</title>
-  <link rel="stylesheet" href="admin-banners.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estetique - Galeria de Banners</title>
+  <link rel="stylesheet" href="inicial.css">
 </head>
 <body>
-  <header class="topo">
-    <h1>🎨 Estetique - Gerenciar Banners</h1>
+  <header>
+    <h1>Estetique 💅</h1>
   </header>
 
-  <main class="painel">
-    <h2>Meus Banners</h2>
-
-    <div class="carrossel">
-      <button class="seta esquerda" id="btnAnterior">&#10094;</button>
-
-      <div class="slide-container">
-        <div class="slide ativo">
-          <img src="banner1.png" alt="Banner Corte Masculino">
-          <p>Corte Masculino</p>
-        </div>
-        <div class="slide">
-          <img src="banner2.png" alt="Banner Sobrancelha">
-          <p>Design de Sobrancelha</p>
-        </div>
-        <div class="slide">
-          <img src="banner1.png" alt="Banner Maquiagem">
-          <p>Maquiagem Profissional</p>
-        </div>
-      </div>
-
-      <button class="seta direita" id="btnProximo">&#10095;</button>
+  <section class="banner1">
+    <div class="banner-container">
+      <button class="arrow left" onclick="mudarSlide(-1)">❮</button>
+      <img id="banner" src="banner1.png" alt="Banner Estetique" />
+      
+      <button class="arrow right" onclick="mudarSlide(1)">❯</button>
     </div>
-  </main>
+  </section>
 
-  <script src="admin-banners.js"></script>
+  <section class="contato">
+    <h2>📞 Contato</h2>
+    <p>Telefone/WhatsApp: <strong>(99) 99999-9999</strong></p>
+    <p>Email: <strong>contato@estetique.com</strong></p>
+  </section>
+
+  <section class="faq">
+    <h2>❓ Dúvidas Frequentes</h2>
+    <ul>
+      <li>Como agendar um horário?</li>
+      <li>Posso alterar meu plano?</li>
+      <li>Como editar minhas fotos?</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Estetique - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="inicial.js"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff;
+  }
+  
+  .top-bar {
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .top-bar h1 {
+    font-size: 28px;
+  }
+  
+  .search-settings input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    width: 300px;
+  }
+  
+  .resultados {
+    padding: 20px;
+  }
+  
+  .resultados h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #67086F;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+  }
+  
+  .card {
+    background: #f9f1fb;
+    border: 1px solid #ca5fb3;
+    border-radius: 12px;
+    padding: 16px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(103, 8, 111, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    margin: 0;
+    color: #67086F;
+  }
+  
+  .card .cidade,
+  .card .nota,
+  .card .preco {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .card p {
+    margin: 6px 0;
+  }
+  
