@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estetique - Profissionais</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estetique - Página Inicial</title>
   <link rel="stylesheet" href="estetique.css">
-  <script src="estetique.js" defer></script>
 </head>
 <body>
-  <header class="top-bar">
-    <h1>Estetique</h1>
-    <div class="search-settings">
-      <input type="text" id="busca" placeholder="Buscar profissionais ou serviços...">
-      <a href="#" class="config-icon">⚙️</a>
+  <header class="topo">
+    <h1 class="logo">Estetique</h1>
+    <div class="busca-container">
+      <input type="text" placeholder="Buscar profissionais ou serviços" class="campo-busca">
+      <button class="btn-buscar">Buscar</button>
     </div>
   </header>
 
-  <section class="categorias">
+  <nav class="categorias">
     <button>Depilação</button>
     <button>Unhas</button>
     <button>Cabelo</button>
     <button>Sobrancelha</button>
     <button>Maquiagem</button>
-  </section>
+  </nav>
 
-  <section class="destaque">
+  <main class="conteudo">
     <h2>Profissionais em destaque</h2>
-    <div class="cards">
+    <section class="cards">
       <div class="card">
-        <img src="img/prof1.jpg" alt="Maria Lima">
-        <div class="card-info">
-          <h3>Maria Lima</h3>
-          <p>Depiladora | São Paulo (online)</p>
-          <p class="rating">⭐ 4.9 (150 avaliações)</p>
-          <p class="descricao">Atendimento delicado, com produtos naturais.</p>
-          <p class="preco">R$80/h • 1ª sessão gratuita</p>
-        </div>
+        <img src="maria.jpg" alt="Foto de Maria Santos">
+        <h3>Maria Santos</h3>
+        <p class="local">São Paulo (online)</p>
+        <p class="avaliacao">⭐ 4.8 <span>(112 notas)</span></p>
+        <p class="servico">Depilação em domicílio</p>
+        <p class="preco">R$149/h <span class="aula">+ 1ª aula gratuita</span></p>
       </div>
+
       <div class="card">
-        <img src="img/prof2.jpg" alt="João Souza">
-        <div class="card-info">
-          <h3>João Souza</h3>
-          <p>Barbeiro | Rio de Janeiro (online)</p>
-          <p class="rating">⭐ 5.0 (200 avaliações)</p>
-          <p class="descricao">Barba, cabelo e bigode com estilo e qualidade.</p>
-          <p class="preco">R$90/h • 1ª sessão gratuita</p>
-        </div>
+        <img src="lucas.jpg" alt="Foto de Lucas Almeida">
+        <h3>Lucas Almeida</h3>
+        <p class="local">Belo Horizonte (online)</p>
+        <p class="avaliacao">⭐ 4.9 <span>(76 notas)</span></p>
+        <p class="servico">Barbearia tradicional, 5 anos de experiência</p>
+        <p class="preco">R$249/h <span class="aula">+ 1ª aula gratuita</span></p>
       </div>
+
       <div class="card">
-        <img src="img/prof3.jpg" alt="Ana Paula">
-        <div class="card-info">
-          <h3>Ana Paula</h3>
-          <p>Designer de Sobrancelha | Campinas</p>
-          <p class="rating">⭐ 4.8 (130 avaliações)</p>
-          <p class="descricao">Especialista em design facial e henna.</p>
-          <p class="preco">R$70/h • 1ª sessão gratuita</p>
-        </div>
+        <img src="ana.jpg" alt="Foto de Ana Paula">
+        <h3>Ana Paula</h3>
+        <p class="local">Campinas (online)</p>
+        <p class="avaliacao">⭐ 5.0 <span>(56 notas)</span></p>
+        <p class="servico">Design de sobrancelha, incluso material</p>
+        <p class="preco">R$79/h <span class="aula">+ 1ª aula gratuita</span></p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </body>
 </html>
+
+
