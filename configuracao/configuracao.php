@@ -9,7 +9,9 @@
 </head>
 
 <body>
-  <div class="header">Estetique ⚙️</div>
+  <?php
+  include "includes/cabecalhoconfig.php"
+  ?>
 
   <div class="section">
     <h2>Configurações</h2>
@@ -22,12 +24,12 @@
     <div id="conteudo-dinamico" class="conteudo"></div>
 
     <div class="voltar" onclick="voltarPagina()">
-        ← Voltar
+      ← Voltar
     </div>
 
 
     <script src="usuario.js"></script>
-    
+
   </div>
 
   <div class="section">
