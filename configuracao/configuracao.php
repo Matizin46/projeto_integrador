@@ -10,7 +10,7 @@
 
 <body>
   <?php
-  include "includes/cabecalhoconfig.php"
+  include "includes/cabecalhoconfig.php";
   ?>
 
   <div class="section">
