@@ -10,7 +10,7 @@
 
 <body>
   <?php
-  include "includes/cabecalhoconfig.php";
+  include "../includes/cabecalhoconfig.php"
   ?>
 
   <div class="section">
@@ -26,7 +26,6 @@
     <div class="voltar" onclick="voltarPagina()">
       ← Voltar
     </div>
-
 
     <script src="usuario.js"></script>
 
