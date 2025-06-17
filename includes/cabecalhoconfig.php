@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estetique - Configurações</title>
-  <link rel="stylesheet" href="configuracoes.css" />
+  <link rel="stylesheet" href="../configuracao/configuracoes.css" />
 </head>
 
 <div class="header">Estetique ⚙️</div>
