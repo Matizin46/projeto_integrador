@@ -12,12 +12,13 @@ body {
   font-size: 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Mantido este */
+  justify-content: center; /* CENTRALIZA HORIZONTALMENTE */
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* Recomendo pra garantir que fique sobreposto */
+  z-index: 1000;
 }
+
 
 .section {
   padding: 20px;

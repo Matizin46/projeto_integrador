@@ -18,7 +18,7 @@
         <input type="password" placeholder="Senha" required>
         <input type="text" placeholder="Endereço" required>
         <input type="tel" placeholder="Telefone" required>
-        <button type="button" onclick="window.location.href='../Home/home.html'">Cadastrar</button>
+        <button type="button" onclick="window.location.href='../Home/home.php'">Cadastrar</button>
       </form>
     </div>
   </section>

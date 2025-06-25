@@ -22,23 +22,23 @@
 
     <div class="painel-direito">
       
-      <form id="form-fornecedor" class="formulario ativo" action="../configuracao/configuracao.html" method="post">
+      <form id="form-fornecedor" class="formulario ativo" action="../fornecedor/configFornecedor.php" method="post">
   
         <h2>Login Fornecedor</h2>
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button type="submit">Entrar</button>
         <p class="link">
-          <a href="#" id="esqueci-fornecedor">Esqueci minha senha</a><br /> <a href="../fornecedor/fornecedor.html">Primeiro acesso? Faça seu cadastro</a></p>
+          <a href="#" id="esqueci-fornecedor">Esqueci minha senha</a><br /> <a href="../fornecedor/fornecedor.php">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
 
-      <form id="form-consumidor" class="formulario" action="../Home/home.html" method="post">
+      <form id="form-consumidor" class="formulario" action="../Home/home.php" method="post">
         <h2>Login Consumidor</h2>
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button>Entrar</button>
         <p class="link">
-          <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../conssumidor/conssumidor.html">Primeiro acesso? Faça seu cadastro</a></p>
+          <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../conssumidor/conssumidor.php">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
    
     </div>

@@ -38,4 +38,4 @@
       </div>
     </div>
   </div>
-  <script src="planos.js"></script>
+  <script src="../configuracao/planos.js"></script>
