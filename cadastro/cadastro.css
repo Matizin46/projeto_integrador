@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* Ajuste entre labels e inputs */
+form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4d5ad4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background-color: #3949ab;
+}
+
+#mensagem {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.voltar{
+    position: fixed;
+    top:10px;
+    left:20px;
+    background-color: #d62828;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+    z-index: 1000;
+    text-decoration: none;
+  }
+
+.voltar:hover {
+    background-color: #a31c1c;
+}
+
+#conteudo-dinamico:empty {
+    display: none;
+  }

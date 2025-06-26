@@ -38,7 +38,7 @@
         <input type="password" placeholder="Senha">
         <button>Entrar</button>
         <p class="link">
-          <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../conssumidor/conssumidor.php">Primeiro acesso? Faça seu cadastro</a></p>
+          <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../consumidor/consumidor.php">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
    
     </div>

@@ -19,7 +19,7 @@
         <input type="email" placeholder="E-mail" required>
         <input type="tel" placeholder="Telefone" required>
         <input type="password" placeholder="Senha" required>
-        <button type="button" onclick="window.location.href='../fornecedor/configFornecedor.php'">Cadastrar</button>
+        <button type="button" onclick="window.location.href='../cadastro/cadastro.php'">Cadastrar</button>
       </form>
     </div>
   </section>

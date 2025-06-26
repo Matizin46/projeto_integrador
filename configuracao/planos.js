@@ -414,8 +414,15 @@ function voltarPagina() {
   window.history.back();
 }
 
+// container.innerHTML = "";
+// container.removeAttribute("data-tipo"); // já tem isso no seu código
+// container.style.display = "none";
+
 container.innerHTML = "";
-container.removeAttribute("data-tipo"); // já tem isso no seu código
+container.dataset.tipo = "";
 container.style.display = "none";
-
-
+ 
+// Limpa qualquer espaço branco residual no layout
+container.style.margin = "0";
+container.style.padding = "0";
+container.style.border = "none"

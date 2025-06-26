@@ -1,91 +1,80 @@
 function mostrarConteudo(tipo) {
   const container = document.getElementById("conteudo-dinamico");
-  let html = "";
 
-  switch (tipo) {
-      case 'perfil':
-          // Exibe um formulário para editar nome, telefone, email e endereço
-          html = `
-            <h3>Editar Perfil</h3>
-            <form id="form-perfil" onsubmit="salvarPerfil(event)">
-              <label>Nome</label>
-              <input type="text" id="nome" placeholder="Seu nome" required />
-              
-              <label>Telefone</label>
-              <input type="tel" id="telefone" placeholder="(99) 99999-9999" required />
-              
-              <label>Email</label>
-              <input type="email" id="email" placeholder="seu@email.com" required />
-              
-              <label>Endereço</label>
-              <input type="text" id="endereco" placeholder="Rua Exemplo, 123" required />
-              
-              <button type="submit" class="btn-vermelho">Salvar</button>
-            </form>
-          `;
-          break;
-
-      case 'chats':
-          // Exibe uma mensagem simples para a seção de conversas anteriores
-          html = "<h3>Minhas Conversas</h3><p>Veja aqui suas conversas anteriores.</p>";
-          break;
-
-      case 'notificacoes':
-          // Exibe a seção de configurações de notificação
-          html = "<h3>Notificações</h3><p>Configure suas notificações.</p>";
-          break;
-
-      case 'cupons':
-          // Exibe o formulário para o usuário adicionar um cupom
-          html = `
-            <h3>Adicionar Cupom</h3>
-            <form id="form-cupom" onsubmit="adicionarCupom(event)">
-              <label for="codigo-cupom">Cupom</label>
-              <input type="text" id="codigo-cupom" placeholder="Digite seu cupom" required />
-              <button type="submit" class="btn-vermelho">Adicionar</button>
-            </form>
-            <div id="cupom-resultado" style="margin-top: 15px;"></div>
-          `;
-          break;
-
-      case 'favoritos':
-          // Exibe a seção de locais favoritos do usuário
-          html = "<h3>Locais Favoritos</h3><p>Gerencie seus locais favoritos.</p>";
-          break;
-
-      case 'pagamento':
-          // Exibe os métodos de pagamento e um botão para adicionar novo cartão
-          html = `
-            <div class="tabs">
-              <button class="tab active" onclick="alternarAba('app')">PAGUE PELO APP</button>
-            </div>
-
-            <div id="conteudo-pagamento">
-              <div id="app" class="aba-conteudo active">
-                <div class="metodo">
-                  <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="PIX" />
-                  <span>PIX</span>
-                </div>
-                <div class="metodo">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
-                  <span>Visa • Crédito</span>
-                </div>
-                <div class="metodo">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" />
-                  <span>Mastercard • Crédito</span>
-                </div>
-                <button class="btn-vermelho">Adicionar novo cartão</button>
-              </div>
-
-              <div id="entrega" class="aba-conteudo">
-                <p>Você poderá pagar com dinheiro ou maquininha no final do serviço.</p>
-              </div>
-            </div>
-          `;
-          break;
+  // Se já está visível com o mesmo tipo, esconde
+  if (container.dataset.tipo === tipo) {
+    container.innerHTML = "";
+    container.dataset.tipo = "";
+    container.style.display = "none"; // <-- Oculta o container
+    return;
   }
 
-  // Insere o conteúdo HTML no container
+  let html = "";
+  container.style.display = "block"; // <-- Mostra apenas quando for clicar em algum item
+  container.dataset.tipo = tipo;
+
+  switch (tipo) {
+    case 'perfil':
+      html = `
+        <h3>Editar Perfil</h3>
+        <form id="form-perfil" onsubmit="salvarPerfil(event)">
+          <label>Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome" required />
+          <label>Telefone</label>
+          <input type="tel" id="telefone" placeholder="(99) 99999-9999" required />
+          <label>Email</label>
+          <input type="email" id="email" placeholder="seu@email.com" required />
+          <label>Endereço</label>
+          <input type="text" id="endereco" placeholder="Rua Exemplo, 123" required />
+          <button type="submit" class="btn-vermelho">Salvar</button>
+        </form>
+      `;
+      break;
+
+    case 'chats':
+      html = "<h3>Minhas Conversas</h3><p>Veja aqui suas conversas anteriores.</p>";
+      break;
+
+    case 'notificacoes':
+      html = "<h3>Notificações</h3><p>Configure suas notificações.</p>";
+      break;
+
+    case 'cupons':
+      html = `
+        <h3>Adicionar Cupom</h3>
+        <form id="form-cupom" onsubmit="adicionarCupom(event)">
+          <label for="codigo-cupom">Cupom</label>
+          <input type="text" id="codigo-cupom" placeholder="Digite seu cupom" required />
+          <button type="submit" class="btn-vermelho">Adicionar</button>
+        </form>
+        <div id="cupom-resultado" style="margin-top: 15px;"></div>
+      `;
+      break;
+
+    case 'favoritos':
+      html = "<h3>Locais Favoritos</h3><p>Gerencie seus locais favoritos.</p>";
+      break;
+
+    case 'pagamento':
+      html = `
+        <h3>Escolha a forma de pagamento</h3>
+        <div class="metodo" onclick="mostrarPix()">
+          <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="PIX" />
+          <span>PIX</span>
+        </div>
+        <div class="metodo" onclick="mostrarFormularioCartao('credito')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+          <span>Visa • Crédito</span>
+        </div>
+        <div class="metodo" onclick="mostrarFormularioCartao('debito')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" />
+          <span>Mastercard • Débito</span>
+        </div>
+        <div id="detalhes-pagamento" style="margin-top: 20px;"></div>
+      `;
+      break;
+  }
+
   container.innerHTML = html;
 }
 
