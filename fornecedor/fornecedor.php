@@ -23,8 +23,6 @@
       </form>
     </div>
   </section>
-  <div class="voltar" onclick="voltarPagina()">
-    ← Voltar
-</div>
-</body>
+  <a href="../Login/login.php" class="voltar">← Voltar</a>
+  </body>
 </html>

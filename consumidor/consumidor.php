@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro Consumidor - Estetique</title>
-  <link rel="stylesheet" href="conssumidor.css">
-  <script src="conssumidor.js" defer></script>
+  <link rel="stylesheet" href="consumidor.css">
+  <script src="consumidor.js" defer></script>
 </head>
 <body>
   <section class="cadastro-consumidor">

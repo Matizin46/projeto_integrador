@@ -1,8 +1,24 @@
-document.getElementById('form-fornecedor').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Fornecedor cadastrado com sucesso!');
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form-fornecedor");
+  const cadastrarBtn = form.querySelector("button");
 
-  function voltarPagina() {
-    window.history.back(); // Volta para a página anterior no histórico do navegador
-  }
+  cadastrarBtn.addEventListener("click", function () {
+    const inputs = form.querySelectorAll("input");
+    let camposPreenchidos = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        camposPreenchidos = false;
+        input.classList.add("campo-vazio");
+      } else {
+        input.classList.remove("campo-vazio");
+      }
+    });
+
+    if (camposPreenchidos) {
+      window.location.href = "../cadastro/cadastro.php";
+    } else {
+      alert("Por favor, preencha todos os campos antes de cadastrar.");
+    }
+  });
+});
