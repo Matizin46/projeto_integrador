@@ -22,12 +22,16 @@
 
     <div class="painel-direito">
       
-      <form id="form-fornecedor" class="formulario ativo" action="../fornecedor/configFornecedor.php" method="post">
+      <form id="form-fornecedor" class="formulario ativo" action="../Login/valida_login.php" method="post">
   
         <h2>Login Fornecedor</h2>
-        <input type="text" placeholder="Usuário ou E-mail">
-        <input type="password" placeholder="Senha">
+        <input type="text" placeholder="Usuário ou E-mail" name="usuario">
+        <input type="password" placeholder="Senha" name="senha">
         <button type="submit">Entrar</button>
+        <?php
+        $erro=$_GET["erro"] ?? "";
+        echo $erro;
+        ?>
         <p class="link">
           <a href="#" id="esqueci-fornecedor">Esqueci minha senha</a><br /> <a href="../fornecedor/fornecedor.php">Primeiro acesso? Faça seu cadastro</a></p>
       </form>
@@ -37,6 +41,10 @@
         <input type="text" placeholder="Usuário ou E-mail">
         <input type="password" placeholder="Senha">
         <button>Entrar</button>
+        <?php
+        $erro=$_GET["erro"] ?? "";
+        echo $erro;
+        ?>
         <p class="link">
           <a href="#" id="esqueci-conssumidor">Esqueci minha senha</a><br /> <a href="../consumidor/consumidor.php">Primeiro acesso? Faça seu cadastro</a></p>
       </form>

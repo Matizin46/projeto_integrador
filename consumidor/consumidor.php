@@ -11,14 +11,14 @@
   <section class="cadastro-consumidor">
     <div class="form-container">
       <h2>Cadastro do Consumidor</h2>
-      <form id="form-consumidor">
-        <input type="text" placeholder="Nome" required>
-        <input type="text" placeholder="CPF" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="password" placeholder="Senha" required>
-        <input type="text" placeholder="Endereço" required>
-        <input type="tel" placeholder="Telefone" required>
-        <button type="button" onclick="window.location.href='../Home/home.php'">Cadastrar</button>
+      <form id="form-consumidor" method="post" action="consumidor_salvar.php">
+        <input type="text" placeholder="Nome" required name="nome">
+        <input type="text" placeholder="CPF" required name="cpf">
+        <input type="email" placeholder="email" required name="email">
+        <input type="password" placeholder="senha" required name="senha">
+        <input type="text" placeholder="endereco" required name="endereco">
+        <input type="tel" placeholder="telefone" required name="telefone">
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
   </section>
