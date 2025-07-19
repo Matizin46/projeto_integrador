@@ -11,15 +11,14 @@
   <section class="cadastro-fornecedor" style="background-image: url('imagens/fundo.png');">
     <div class="form-container">
       <h2>Cadastro do Fornecedor</h2>
-      <form id="form-fornecedor">
-        <input type="text" placeholder="Nome" required>
-        <input type="text" placeholder="CPF ou CNPJ" required>
-        <input type="text" placeholder="Endereço do estabelecimento" required>
-        <input type="text" placeholder="Usuário" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="tel" placeholder="Telefone" required>
-        <input type="password" placeholder="Senha" required>
-        <button type="button" onclick="window.location.href='../cadastro/cadastro.php'">Cadastrar</button>
+      <form id="form-fornecedor" method="post" action="fornecedor_salvar.php">
+        <input type="text" placeholder="Nome" required name="nome">
+        <input type="text" placeholder="CPF ou CNPJ" required name="cpf">
+        <input type="email" placeholder="E-mail" required name="email">
+        <input type="password" placeholder="Senha" required name="senha">
+        <input type="text" placeholder="Endereço do Estabelecimento" required name="endereco">
+        <input type="tel" placeholder="Telefone" required name="telefone">
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
   </section>

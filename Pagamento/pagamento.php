@@ -18,3 +18,22 @@
 </body>
 
 </html>
+
+<?php
+session_start();
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../Login/login.php");
+    exit;
+}
+
+include "../conexao.php";
+
+// ID do consumidor logado
+$consumidor_id = $_SESSION['id_usuario'];
+
+// ID do serviço vindo da URL
+$servico_id = $_GET['servico_id'] ?? 0;
+
+// Aqui você pode mostrar os detalhes do pagamento antes da confirmação
+?>

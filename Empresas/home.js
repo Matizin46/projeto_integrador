@@ -12,7 +12,7 @@ setInterval(mostrarProximoSlide, 3000);
 // Busca (mock)
 document.getElementById("busca").addEventListener("input", function () {
   const termo = this.value.toLowerCase();
-  const cards = document.querySelectorAll(".card");
+  const cards = document.querySelectorAll(".empresa");
 
   cards.forEach(card => {
     const nome = card.querySelector("h3").textContent.toLowerCase();
