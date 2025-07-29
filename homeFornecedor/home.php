@@ -177,21 +177,7 @@ if ($rowUser = mysqli_fetch_assoc($resUsuario)) {
       </tr>
     </thead>
     <tbody>
-      <!-- Dados fictícios para exemplo -->
-      <tr>
-        <td>Maria Souza</td>
-        <td>Maquiagem</td>
-        <td>2025-07-21</td>
-        <td>14:00</td>
-        <td>Confirmado</td>
-      </tr>
-      <tr>
-        <td>João Lima</td>
-        <td>Massagem</td>
-        <td>2025-07-22</td>
-        <td>10:30</td>
-        <td>Pendente</td>
-      </tr>
+      
     </tbody>
   </table>
 

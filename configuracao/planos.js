@@ -227,7 +227,7 @@ function mostrarConteudo(tipo) {
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" />
           <span>Mastercard • Débito</span>
         </div>
-        <div id="detalhes-pagamento" style="margin-top: 20px;"></div>
+        <div id="detalhes-pagamento" style="margin-top: 20px margin-bottom: 50px;"></div>
       `;
       break;
     // (outros cases mantidos conforme o seu código anterior)

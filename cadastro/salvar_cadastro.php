@@ -29,7 +29,7 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
 }
 
 // Inserção no banco
-$sql = "INSERT INTO servicos(nome, descricao, categoria, preco, empresa_id, imagem_url)
+$sql = "INSERT INTO servicos(nome_servico, descricao, categoria, preco, empresa_id, imagem_url)
         VALUES('$nome', '$descricao', '$categoria', '$preco', '$empresa_id', '$url_imagem')";
 
 $resultado = mysqli_query($conexao, $sql);
@@ -40,3 +40,14 @@ mysqli_close($conexao);
 header("Location: ../homeFornecedor/home.php");
 exit;
 ?>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("sucesso") === "1") {
+      const msg = document.getElementById("mensagem");
+      msg.innerHTML = "<p style='color: green; font-weight: bold; margin-top: 20px;'>Cadastro de serviço feito com sucesso!</p>";
+    }
+  });
+</script>
+
