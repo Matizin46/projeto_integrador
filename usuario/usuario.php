@@ -11,9 +11,6 @@
     ← Voltar
   </div>
 
-  <?php
-  include "../includes/pagamentos.php"
-  ?>
 
   <?php
   include "../includes/rodape.php"

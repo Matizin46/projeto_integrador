@@ -1,101 +1,204 @@
+<?php
+session_start();
+include "../conexao.php";
+
+$empresa_id = $_SESSION['id_usuario'] ?? 0;
+
+$sql = "SELECT imagem_url, nome_servico FROM servicos WHERE empresa_id = $empresa_id LIMIT 1";
+$resultado = mysqli_query($conexao, $sql);
+$imagemBanner = "assets/banner_padrao.png";
+$nomeServico = "";
+
+if ($row = mysqli_fetch_assoc($resultado)) {
+  $imagemBanner = "../" . $row['imagem_url'];
+  $nomeServico = $row['nome_servico'];
+}
+
+$sqlUsuario = "SELECT nome FROM usuarios WHERE id = $empresa_id";
+$resUsuario = mysqli_query($conexao, $sqlUsuario);
+$nomeUsuario = "";
+
+if ($rowUser = mysqli_fetch_assoc($resUsuario)) {
+  $nomeUsuario = $rowUser['nome'];
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Papelaria Criativa</title>
+  <title>Seus agendamentos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="home.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #FFF;
+    }
+
+    .bg-gradient {
+      background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5) !important;
+    }
+
+    header {
+      position: relative;
+      padding: 30px 0;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .dropdown-btn {
+      background: transparent;
+      color: white;
+      font-weight: bold;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 35px;
+      background-color: white;
+      min-width: 180px;
+      border-radius: 6px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      color: #67086F;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f5e5f9;
+    }
+
+    .imagem-servico {
+      max-width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .container-central {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .nome-servico {
+      font-size: 24px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .menu {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #67086F;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #f8e6f3;
+    }
+
+    table {
+      margin: 40px auto;
+      width: 90%;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    th {
+      background-color: #ca5fb3;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #f1f1f1;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-  <header class="bg-gradient text-white text-center py-4">
-    <h1>Papelaria Criativa</h1>
+  <header class="bg-gradient text-white text-center">
+    <h1>Agendamentos</h1>
+    <div class="dropdown">
+      <button onclick="toggleDropdown()" class="dropdown-btn">
+        Olá, <?php echo htmlspecialchars($nomeUsuario); ?> ▾
+      </button>
+      <div id="dropdown-menu" class="dropdown-content">
+        <a href="horario.php">Cadastrar horários</a>
+        <a href="../fornecedor/configFornecedor.php">Editar Perfil</a>
+        <a href="../Login/logout.php">Sair</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Carousel -->
-  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="banner1.png" class="d-block w-100" alt="Banner 1">
-      </div>
-      <div class="carousel-item">
-        <img src="banner2.png" class="d-block w-100" alt="Banner 2">
-      </div>
-      <div class="carousel-item">
-        <img src="banner3.png" class="d-block w-100" alt="Banner 3">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+  <div class="container-central">
+    <img src="<?php echo $imagemBanner; ?>" class="imagem-servico" alt="Imagem Serviço">
+    <div class="nome-servico"><?php echo htmlspecialchars($nomeServico); ?></div>
   </div>
 
-  <!-- Planos -->
-  <main class="container my-5">
-    <h2 class="text-center mb-4">Escolha um Plano</h2>
-    <div class="row justify-content-center">
-      <?php
-      $planos = [
-        [
-          "nome" => "BÁSICO",
-          "preco" => "R$ 10",
-          "beneficios" => [
-            "10 Chats simultâneos",
-            "Sem impulso de loja",
-            "Sem banner no perfil",
-            "4 fotos por anúncio",
-            "Taxa de 20% em pagamentos"
-          ]
-        ],
-        [
-          "nome" => "AVANÇADO",
-          "preco" => "R$ 30",
-          "beneficios" => [
-            "30 Chats simultâneos",
-            "Impulso de loja 20%",
-            "1 banner de perfil",
-            "10 fotos por anúncio",
-            "Taxa de 15% em pagamentos"
-          ]
-        ],
-        [
-          "nome" => "PREMIUM",
-          "preco" => "R$ 50",
-          "beneficios" => [
-            "Chats ilimitados",
-            "Impulso máximo",
-            "5 banners de perfil",
-            "Anúncio 100% personalizado",
-            "Taxa de 10% em pagamentos"
-          ]
-        ]
-      ];
 
-      foreach ($planos as $index => $plano) {
-        echo '<div class="col-md-4 mb-4">';
-        echo '  <div class="plano p-4 text-center">';
-        echo "    <h3>{$plano['nome']}<br>{$plano['preco']}</h3>";
-        echo '    <ul class="text-start">';
-        foreach ($plano['beneficios'] as $beneficio) {
-          echo "<li>$beneficio</li>";
-        }
-        echo '    </ul>';
-        echo "    <button class='btn-plano' onclick='adquirirPlano(".($index+1).")'>ADQUIRIR</button>";
-        echo '  </div>';
-        echo '</div>';
-      }
-      ?>
-    </div>
-  </main>
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Serviço</th>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function adquirirPlano(id) {
-      alert("Plano " + id + " adquirido!");
-    }
-  </script>
+  <?php
+  include "../includes/rodape.php"
+  ?>
+
 </body>
 </html>
+ <script>
+    function toggleDropdown() {
+      var menu = document.getElementById("dropdown-menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropdown-btn')) {
+        var menu = document.getElementById("dropdown-menu");
+        if (menu && menu.style.display === "block") {
+          menu.style.display = "none";
+        }
+      }
+    };
+  </script>
