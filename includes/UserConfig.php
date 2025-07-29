@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
     $_SESSION['usuario_id'] = 1;
@@ -26,10 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param($tipos, ...$params);
         $stmt->execute();
-
-        if (!empty($updates)) {
-            $mensagem = $stmt->affected_rows > 0 ? "Dados atualizados com sucesso!" : "Nenhuma alteração realizada.";
-        }
+        $mensagem = $stmt->affected_rows > 0 ? "Dados atualizados com sucesso!" : "Nenhuma alteração realizada.";
     }
 }
 
@@ -38,7 +35,6 @@ $stmt->bind_param("i", $_SESSION['usuario_id']);
 $stmt->execute();
 $result = $stmt->get_result()->fetch_assoc();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -143,12 +139,12 @@ $result = $stmt->get_result()->fetch_assoc();
 
   <div id="formulario" class="conteudo">
     <form method="POST">
-      <input type="text" name="nome" placeholder="Alterar nome (opcional)" value="<?php echo htmlspecialchars($result['nome']); ?>">
-      <input type="text" name="cpf" placeholder="Alterar CPF (opcional)" value="<?php echo htmlspecialchars($result['cpf']); ?>">
-      <input type="email" name="email" placeholder="Alterar e-mail (opcional)" value="<?php echo htmlspecialchars($result['email']); ?>">
-      <input type="password" name="senha" placeholder="Alterar senha (opcional)" value="<?php echo htmlspecialchars($result['senha']); ?>">
-      <input type="text" name="endereco" placeholder="Alterar endereço (opcional)" value="<?php echo htmlspecialchars($result['endereco']); ?>">
-      <input type="text" name="telefone" placeholder="Alterar telefone (opcional)" value="<?php echo htmlspecialchars($result['telefone']); ?>">
+      <input type="text" name="nome" placeholder="Alterar nome (opcional)">
+      <input type="text" name="cpf" placeholder="Alterar CPF (opcional)">
+      <input type="email" name="email" placeholder="Alterar e-mail (opcional)">
+      <input type="password" name="senha" placeholder="Alterar senha (opcional)">
+      <input type="text" name="endereco" placeholder="Alterar endereço (opcional)">
+      <input type="text" name="telefone" placeholder="Alterar telefone (opcional)">
       <button type="submit">Salvar alterações</button>
     </form>
   </div>

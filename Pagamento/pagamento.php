@@ -37,3 +37,4 @@ $servico_id = $_GET['servico_id'] ?? 0;
 
 // Aqui você pode mostrar os detalhes do pagamento antes da confirmação
 ?>
+
