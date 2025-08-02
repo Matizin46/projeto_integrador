@@ -4,12 +4,9 @@
   ?>
 
   <?php
-  include "../includes/UserConfig.php"
+  include "../edicao/UserConfig.php"
   ?>
-  
-  <?php
-  include "../includes/pagamentos.php"
-  ?>
+<div class="voltar" onclick="window.history.back();">← Voltar</div>
 
   <?php
   include "../includes/rodape.php"

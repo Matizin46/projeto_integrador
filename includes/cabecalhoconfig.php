@@ -8,4 +8,4 @@
   <link rel="stylesheet" href="../configuracao/configuracoes.css" />
 </head>
 
-<div class="header">Estetique ⚙️</div>
+<div class="header">Estetique</div>

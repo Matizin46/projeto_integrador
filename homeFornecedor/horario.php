@@ -1,4 +1,9 @@
 <?php
+  include "../includes/cabecalhoconfig.php"
+?>
+<div class="voltar" onclick="window.history.back();">← Voltar</div>
+
+<?php
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: ../Login/login.php");
@@ -8,7 +13,6 @@ if (!isset($_SESSION['id_usuario'])) {
 include "../conexao.php";
 $empresa_id = $_SESSION['id_usuario'];
 
-// Busca o único serviço dessa empresa
 $sqlServico = "SELECT id, nome_servico FROM servicos WHERE empresa_id = $empresa_id LIMIT 1";
 $res = mysqli_query($conexao, $sqlServico);
 $servico = mysqli_fetch_assoc($res);
@@ -28,11 +32,12 @@ if (!$servico) {
     body {
       background: #fff0fb;
       font-family: Arial, sans-serif;
+      padding-top: 80px;  /* Espaço do topo */
+      padding-bottom: 100px; /* Espaço acima do rodapé */
     }
 
     .container {
       max-width: 600px;
-      margin: 50px auto;
       padding: 30px;
       background: #fff;
       border-radius: 15px;
@@ -52,13 +57,27 @@ if (!$servico) {
     .form-label {
       font-weight: bold;
     }
+
+    .voltar {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #d62828;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
 <body>
+
   <div class="container">
     <h2 class="text-center mb-4">Cadastro de Horário</h2>
     <form action="salvar_horario.php" method="post">
-      <!-- Serviço fixo -->
       <input type="hidden" name="servico_id" value="<?php echo $servico['id']; ?>">
       <div class="mb-3">
         <label class="form-label">Serviço</label>
@@ -87,5 +106,10 @@ if (!$servico) {
       <button type="submit" class="btn btn-roxo w-100">Salvar Horário</button>
     </form>
   </div>
+
 </body>
 </html>
+
+<?php
+  include "../includes/rodape.php"
+?>

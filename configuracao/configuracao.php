@@ -4,7 +4,7 @@
   ?>
 
   <?php
-  include "../includes/UserConfig.php"
+  include "../edicao/UserConfig.php"
   ?>
 
   <div class="voltar" onclick="voltarPagina()">

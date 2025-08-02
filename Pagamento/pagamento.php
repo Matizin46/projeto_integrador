@@ -1,4 +1,5 @@
 <body>
+
     <?php
     include "../includes/cabecalhoconfig.php"
     ?>
@@ -16,9 +17,11 @@
     ?>
 
 </body>
+<div class="voltar" onclick="window.history.back();">← Voltar</div>
 
 </html>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../Pagamento/pagamento.js"></script>
 <?php
 session_start();
 
