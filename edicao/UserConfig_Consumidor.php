@@ -33,6 +33,8 @@ if ($usuario_id > 0) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,6 +69,7 @@ if ($usuario_id > 0) {
       font-size: 16px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       transition: background 0.3s;
+      cursor: pointer;
     }
     .voltar:hover {
       background-color: #b02a37;
@@ -76,7 +79,6 @@ if ($usuario_id > 0) {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      min-height: auto;
     }
     .config-box {
       background: white;
@@ -114,6 +116,23 @@ if ($usuario_id > 0) {
     .sucesso { background-color: #d4edda; color: #155724; }
     .erro    { background-color: #f8d7da; color: #721c24; }
 
+    .btn-excluir {
+      background-color: #dc3545;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      display: block;
+      margin-top: 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-excluir:hover {
+      background-color: #b02a37;
+    }
+
     
   </style>
 </head>
@@ -135,7 +154,6 @@ if ($usuario_id > 0) {
       <?php endif; ?>
 
       <form action="salvar_config_consumidor.php" method="post">
-
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
           <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
@@ -162,19 +180,34 @@ if ($usuario_id > 0) {
         </div>
         <div class="d-grid mt-4">
           <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
-        
         </div>
-        
       </form>
-      <a href="excluir_config_fornecedor.php" onclick="return confirm('Tem certeza que deseja excluir sua conta? Essa ação não poderá ser desfeita.')" class="btn-excluir">
-        ❌ Excluir Conta
-      </a>
+
+      <button type="button" class="btn-excluir" id="btnExcluir">❌ Excluir Conta</button>
+
     </div>
   </div>
 
-
-
   <?php include "../includes/rodape.php"; ?>
+  <script>
+document.getElementById("btnExcluir").addEventListener("click", function () {
+  Swal.fire({
+    title: 'Tem certeza?',
+    text: 'Essa ação não poderá ser desfeita!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#aaa',
+    confirmButtonText: 'Sim, excluir conta!',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = 'excluir_config_fornecedor.php';
+    }
+  });
+});
+</script>
+
 </body>
 </html>
 

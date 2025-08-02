@@ -36,7 +36,6 @@ if ($usuario_id > 0) {
   <style>
     body {
       background-color: #fef0fb;
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
     }
     .top-bar {
@@ -62,6 +61,7 @@ if ($usuario_id > 0) {
       font-size: 16px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       transition: background 0.3s;
+      cursor: pointer;
     }
     .voltar:hover {
       background-color: #b02a37;
@@ -71,7 +71,6 @@ if ($usuario_id > 0) {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      min-height: auto;
     }
     .config-box {
       background: white;
@@ -119,6 +118,7 @@ if ($usuario_id > 0) {
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
+      width: 100%;
     }
   </style>
 </head>
@@ -139,7 +139,7 @@ if ($usuario_id > 0) {
         </div>
       <?php endif; ?>
 
-      <form action="salvar_config_consumidor.php" method="post">
+      <form action="..edicao/salvar_config_consumidor.php" method="post">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
           <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
@@ -211,3 +211,4 @@ if ($usuario_id > 0) {
 
 </body>
 </html>
+

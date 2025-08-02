@@ -39,5 +39,5 @@ if ($updates) {
     $_SESSION['mensagem'] = "⚠️ Nenhum campo preenchido.";
 }
 
-header("Location: UserConfig.php");
+header("Location: ../edicao/UserConfig.php");
 exit;
