@@ -183,31 +183,9 @@ if ($usuario_id > 0) {
         </div>
       </form>
 
-      <button type="button" class="btn-excluir" id="btnExcluir">❌ Excluir Conta</button>
 
     </div>
   </div>
 
   <?php include "../includes/rodape.php"; ?>
-  <script>
-document.getElementById("btnExcluir").addEventListener("click", function () {
-  Swal.fire({
-    title: 'Tem certeza?',
-    text: 'Essa ação não poderá ser desfeita!',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#aaa',
-    confirmButtonText: 'Sim, excluir conta!',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      window.location.href = 'excluir_config_fornecedor.php';
-    }
-  });
-});
-</script>
-
-</body>
-</html>
-
+  

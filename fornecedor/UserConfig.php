@@ -2,12 +2,12 @@
 session_start();
 include "../conexao.php";
 
-$usuario_id = $_SESSION['id_usuario'] ?? 0;
+$id_tipo_usuario = $_SESSION['id_tipo_usuario'] ?? 0;
 $nome = $cpf = $email = $endereco = $telefone = "";
 $msg = $_SESSION['msg'] ?? null;
 unset($_SESSION['msg']);
 
-if ($usuario_id > 0) {
+if ($id_tipo_usuario > 0) {
   $stmt = $conexao->prepare("SELECT nome, cpf, email, endereco, telefone FROM usuarios WHERE id = ?");
   $stmt->bind_param("i", $usuario_id);
   $stmt->execute();
@@ -107,19 +107,7 @@ if ($usuario_id > 0) {
     }
     .sucesso { background-color: #d4edda; color: #155724; }
     .erro    { background-color: #f8d7da; color: #721c24; }
-    .btn-excluir {
-      background-color: #dc3545;
-      color: white;
-      padding: 12px;
-      text-align: center;
-      display: block;
-      margin-top: 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-    }
+    
   </style>
 </head>
 <body>
@@ -139,7 +127,8 @@ if ($usuario_id > 0) {
         </div>
       <?php endif; ?>
 
-      <form action="..edicao/salvar_config_consumidor.php" method="post">
+      <form action="../fornecedor/salvar_config_fornecedor.php" method="post">
+
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
           <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
@@ -169,46 +158,8 @@ if ($usuario_id > 0) {
         </div>
       </form>
 
-      <button class="btn-excluir" onclick="excluirConta()">❌ Excluir Conta</button>
+      
     </div>
   </div>
 
-  <script>
-    function excluirConta() {
-      Swal.fire({
-        title: 'Tem certeza?',
-        text: 'Essa ação irá excluir sua conta permanentemente!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sim, excluir!',
-        cancelButtonText: 'Cancelar',
-        confirmButtonColor: '#dc3545'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          fetch('excluir_config_consumidor.php')
-            .then(response => response.json())
-            .then(data => {
-              if (data.status === 'ok') {
-                Swal.fire({
-                  title: 'Excluído!',
-                  text: 'Sua conta foi excluída.',
-                  icon: 'success',
-                  confirmButtonText: 'OK'
-                }).then(() => {
-                  window.location.href = '../Login/login.php';
-                });
-              } else {
-                Swal.fire('Erro!', data.mensagem || 'Erro ao excluir.', 'error');
-              }
-            })
-            .catch(() => {
-              Swal.fire('Erro!', 'Não foi possível excluir a conta.', 'error');
-            });
-        }
-      });
-    }
-  </script>
-
-</body>
-</html>
-
+  

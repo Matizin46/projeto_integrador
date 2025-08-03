@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 1) {
+if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] != 1) {
     die("Acesso negado.");
 }
 
@@ -24,7 +24,7 @@ foreach ($campos as $campo) {
 }
 
 if ($updates) {
-    $params[] = $_SESSION['usuario_id'];
+    $params[] = $_SESSION['usuario_id']; // ✅ ID do usuário logado
     $tipos .= 'i';
 
     $sql = "UPDATE usuarios SET " . implode(', ', $updates) . " WHERE id = ?";
@@ -39,5 +39,5 @@ if ($updates) {
     $_SESSION['mensagem'] = "⚠️ Nenhum campo preenchido.";
 }
 
-header("Location: ../edicao/UserConfig.php");
+header("Location: UserConfig.php");
 exit;

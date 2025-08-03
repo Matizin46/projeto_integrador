@@ -1,9 +1,17 @@
 <?php
 include "../includes/cabecalhoconfig.php";
 session_start();
-if (!isset($_SESSION['usuario_id'])) {
-    $_SESSION['usuario_id'] = 1;
+
+// ✅ Validação de sessão segura
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['tipo_usuario'])) {
+    die("<p style='color:red; text-align:center; padding:20px;'>⚠️ Acesso negado. Faça login.</p>");
 }
+
+// ✅ Apenas consumidores (tipo 2) podem acessar esta página
+if ($_SESSION['tipo_usuario'] != 2) {
+    die("<p style='color:red; text-align:center; padding:20px;'>⚠️ Acesso exclusivo para consumidores.</p>");
+}
+
 $conn = new mysqli('localhost', 'root', '12345678', 'bd_estetique');
 
 $mensagem = '';
@@ -14,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     foreach ($campos as $campo) {
         if (!empty($_POST[$campo])) {
+            // Protege a senha com hash ao alterar
+            if ($campo === 'senha') {
+                $_POST[$campo] = password_hash($_POST[$campo], PASSWORD_DEFAULT);
+            }
             $updates[] = "$campo = ?";
             $params[] = $_POST[$campo];
             $tipos .= 's';
@@ -75,7 +87,6 @@ $result = $stmt->get_result()->fetch_assoc();
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-     
     }
 
     .option:hover {

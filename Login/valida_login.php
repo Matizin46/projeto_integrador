@@ -1,40 +1,55 @@
 <?php
-$usuario1 = $_POST['usuario'];
-$senha1 = $_POST['senha'];
-$tipo1 = $_POST['tipo']; // 1 = fornecedor, 2 = consumidor
+session_start();
+
+$usuario1 = $_POST['usuario'] ?? '';
+$senha1 = $_POST['senha'] ?? '';
+$tipo1   = $_POST['tipo'] ?? ''; // 1 = fornecedor, 2 = consumidor
 
 include "../conexao.php";
 
-// Consulta com validação do tipo de usuário
-$sql = "SELECT * FROM usuarios WHERE email='$usuario1' AND senha='$senha1' AND id_tipo_usuario='$tipo1'";
-$resultado = mysqli_query($conexao, $sql);
+// Consulta segura com prepared statement
+$sql = "SELECT * FROM usuarios WHERE email = ? AND id_tipo_usuario = ?";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("si", $usuario1, $tipo1);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
 if ($resultado->num_rows > 0) {
-    $linha = mysqli_fetch_assoc($resultado);
-    session_start();
-    $_SESSION['id_usuario'] = $linha['id'];
-    $id_usuario = $linha['id'];
+    $linha = $resultado->fetch_assoc();
 
-    // Redirecionamento conforme o tipo
-    if ($tipo1 == 1) {
-        // Verifica se o fornecedor já cadastrou algum serviço
-        $verificaServicos = "SELECT * FROM servicos WHERE empresa_id = '$id_usuario'";
-        $resServicos = mysqli_query($conexao, $verificaServicos);
+    // Comparação direta de senha (sem hash, pois é um site escolar)
+    if ($senha1 == $linha['senha']) {
+        // ✅ Nomes de sessão padronizados com o restante do sistema
+        $_SESSION['usuario_id']   = $linha['id'];               // usado no salvar_config
+        $_SESSION['tipo_usuario'] = $linha['id_tipo_usuario'];  // usado para validar tipo
 
-        if ($resServicos->num_rows > 0) {
-            // Já tem serviço → vai para home do fornecedor
-            header("Location: ../homeFornecedor/home.php");
-        } else {
-            // Não tem serviço → vai para tela de cadastro
-            header("Location: ../cadastro/cadastro.php");
+        $id_usuario = $linha['id'];
+
+        // ✅ Redirecionamento por tipo
+        if ($tipo1 == 1) {
+            // Fornecedor → verifica se já tem serviço
+            $verificaServicos = "SELECT * FROM servicos WHERE empresa_id = ?";
+            $stmt2 = $conexao->prepare($verificaServicos);
+            $stmt2->bind_param("i", $id_usuario);
+            $stmt2->execute();
+            $resServicos = $stmt2->get_result();
+
+            if ($resServicos->num_rows > 0) {
+                header("Location: ../homeFornecedor/home.php");
+            } else {
+                header("Location: ../cadastro/cadastro.php");
+            }
+        } elseif ($tipo1 == 2) {
+            // Consumidor → vai para a tela de empresas
+            header("Location: ../Empresas/empresas.php");
         }
-    } elseif ($tipo1 == 2) {
-        // Consumidor → vai para home normal
-        header("Location: ../Empresas/empresas.php");
+        exit;
+    } else {
+        header("Location: login.php?erro=Senha incorreta.");
+        exit;
     }
 } else {
-    header("location:../Login/login.php?erro=Usuário ou senha inválidos");
+    header("Location: login.php?erro=Usuário não encontrado.");
+    exit;
 }
-
-mysqli_close($conexao);
 ?>

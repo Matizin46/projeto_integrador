@@ -4,7 +4,7 @@
   ?>
 
   <?php
-  include "../edicao/UserConfig.php"
+  include "../fornecedor/UserConfig.php"
   ?>
 <div class="voltar" onclick="window.history.back();">← Voltar</div>
 
