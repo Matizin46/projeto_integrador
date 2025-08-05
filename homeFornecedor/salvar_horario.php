@@ -2,7 +2,7 @@
 session_start();
 include "../conexao.php";
 
-$empresa_id = $_SESSION['id_usuario'] ?? 0;
+$empresa_id = $_SESSION['usuario_id'] ?? 0;
 $servico_id = $_POST['servico_id'];
 $data = $_POST['data'];
 $hora = $_POST['hora'];

@@ -2,26 +2,48 @@
 session_start();
 include "../conexao.php";
 
-$empresa_id = $_SESSION['id_usuario'] ?? 0;
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_id'])) {
+    die("Acesso não autorizado.");
+}
 
+$empresa_id = intval($_SESSION['usuario_id']); // ID do usuário logado
+
+// Busca nome, tipo e descrição do tipo de usuário
+$nomeUsuario = "";
+$tipoUsuario = "";
+$tipoUsuarioId = null;
+
+$stmt = $conexao->prepare("
+    SELECT u.nome, u.id_tipo_usuario, t.descricao 
+    FROM usuarios u 
+    INNER JOIN tipo_usuario t ON u.id_tipo_usuario = t.id 
+    WHERE u.id = ?
+");
+$stmt->bind_param("i", $empresa_id);
+$stmt->execute();
+$stmt->bind_result($nomeUsuario, $tipoUsuarioId, $tipoUsuario);
+$stmt->fetch();
+$stmt->close();
+
+// ❌ (Opcional) Bloquear outros tipos que não sejam 1 (Fornecedor) ou 2 (Consumidor)
+if (!in_array($tipoUsuarioId, [1, 2])) {
+    die("Acesso restrito.");
+}
+
+// Buscar imagem e nome do serviço
 $sql = "SELECT imagem_url, nome_servico FROM servicos WHERE empresa_id = $empresa_id LIMIT 1";
 $resultado = mysqli_query($conexao, $sql);
+
 $imagemBanner = "assets/banner_padrao.png";
 $nomeServico = "";
 
 if ($row = mysqli_fetch_assoc($resultado)) {
-  $imagemBanner = "../" . $row['imagem_url'];
-  $nomeServico = $row['nome_servico'];
-}
-
-$sqlUsuario = "SELECT nome FROM usuarios WHERE id = $empresa_id";
-$resUsuario = mysqli_query($conexao, $sqlUsuario);
-$nomeUsuario = "";
-
-if ($rowUser = mysqli_fetch_assoc($resUsuario)) {
-  $nomeUsuario = $rowUser['nome'];
+    $imagemBanner = "../" . $row['imagem_url'];
+    $nomeServico = $row['nome_servico'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

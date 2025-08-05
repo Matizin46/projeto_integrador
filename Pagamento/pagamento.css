@@ -1,31 +1,96 @@
-.option {
-    background: #fff;
-    padding : 80px 0;
-    margin-bottom: 80px 0;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.2s;
-
-
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
 }
 
-.option:hover {
-    background: #f0f0f0;
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.formas {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.metodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.metodo:hover {
+  transform: scale(1.05);
+}
+
+.metodo img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button.btn-vermelho {
+  background-color: #d62828;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.btn-vermelho:hover {
+  background-color: #b71c1c;
 }
 
 .voltar {
-    position: fixed;
-    top: 10px;
-    left: 20px;
-    background-color: #d62828;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  background-color: #d62828;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  /* ... */
+  padding-bottom: 100px; /* para evitar conflito com o rodapé */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 80px; /* espaçamento para o botão não ser encoberto */
 }

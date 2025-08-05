@@ -59,10 +59,12 @@ while ($linha = mysqli_fetch_assoc($resultado)) {
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       transition: background 0.3s;
       cursor: pointer;
+     
     }
     .voltar:hover {
       background-color: #b02a37;
-    }
+  
+}
     .container {
       padding: 60px 15px 150px 15px;
       display: flex;
@@ -161,6 +163,8 @@ while ($linha = mysqli_fetch_assoc($resultado)) {
     </form>
   </div>
 </div>
-
+ <?php
+  include "../includes/rodape.php"
+  ?>
 </body>
 </html>

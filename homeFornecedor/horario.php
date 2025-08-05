@@ -1,17 +1,17 @@
 <?php
-  include "../includes/cabecalhoconfig.php"
-?>
+    include "../includes/cabecalhoconfig.php"
+    ?>
 <div class="voltar" onclick="window.history.back();">← Voltar</div>
 
 <?php
 session_start();
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['usuario_id'])) {
     header("Location: ../Login/login.php");
     exit;
 }
 
 include "../conexao.php";
-$empresa_id = $_SESSION['id_usuario'];
+$empresa_id = $_SESSION['usuario_id'];
 
 $sqlServico = "SELECT id, nome_servico FROM servicos WHERE empresa_id = $empresa_id LIMIT 1";
 $res = mysqli_query($conexao, $sqlServico);

@@ -104,7 +104,7 @@ if (isset($_SESSION['usuario_id'])) {
           Olá, <?= htmlspecialchars($nomeUsuario) ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="../Empresas/UserConfig_Consumidor.php">Editar Cadastro</a></li>
+          <li><a class="dropdown-item" href="../fornecedor/UserConfig.php">Editar Cadastro</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item text-danger" href="../Login/logout.php">Sair</a></li>
         </ul>
@@ -180,6 +180,7 @@ if (isset($_SESSION['usuario_id'])) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    
     function mostrarHorarios(index) {
       const horarioDiv = document.getElementById(`horarios-${index}`);
       horarioDiv.style.display = (horarioDiv.style.display === 'none' || horarioDiv.style.display === '') ? 'block' : 'none';
@@ -188,6 +189,7 @@ if (isset($_SESSION['usuario_id'])) {
     function mostrarPagamento(select, index) {
       const pagamento = document.getElementById(`pagamento-${index}`);
       pagamento.style.display = select.value !== "" ? "block" : "none";
+      
     }
 
     function buscarServicos() {
@@ -197,9 +199,11 @@ if (isset($_SESSION['usuario_id'])) {
       cards.forEach(card => {
         const texto = card.innerText.toLowerCase();
         card.style.display = texto.includes(termo) ? "block" : "none";
+
       });
     }
   </script>
+  
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$empresa_id = $_SESSION['id_usuario'];
+$empresa_id = $_SESSION['usuario_id'];
 
 $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];

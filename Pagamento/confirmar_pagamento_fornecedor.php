@@ -4,7 +4,7 @@ include "../conexao.php";
 
 header("Content-Type: text/plain");
 
-$usuario_id = $_SESSION['id_usuario'] ?? 0;
+$usuario_id = $_SESSION['usuario_id'] ?? 0;
 $plano_id = $_POST['plano_id'] ?? 0;
 $tipo = $_POST['tipo_pagamento'] ?? '';
 $nome = $_POST['nome_cartao'] ?? '';
