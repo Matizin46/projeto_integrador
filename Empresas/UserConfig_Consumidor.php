@@ -137,7 +137,28 @@ if ($usuario_id > 0) {
   </style>
 </head>
 <body>
+<?php
+#formulario alterar
+$id = $_GET['idalterar'];
+$nome = "";
+$email = "";
+$cpf = "";
+$endereco = "";
+$telefone = "";
 
+
+$sql = "select * from usuarios where id = $id";
+$resultado = mysqli_query($conexao, $sql);
+
+while ($linha = mysqli_fetch_assoc($resultado)) {
+  $id = $linha['id'];
+  $nome = $linha['nome'];
+  $email = $linha['email'];
+  $cpf = $linha['cpf'];
+  $endereco = $linha['endereco'];
+  $telefone = $linha['telefone'];
+}
+?>
   <div class="top-bar">
     <h3>Editar Cadastro</h3>
     <div class="voltar" onclick="window.history.back();">← Voltar</div>
@@ -178,6 +199,9 @@ if ($usuario_id > 0) {
           <label for="telefone" class="form-label">Telefone:</label>
           <input type="text" class="form-control" name="telefone" id="telefone" value="<?= htmlspecialchars($telefone) ?>">
         </div>
+       
+          <input type="hidden" class="form-control" name="id" id="id" value="<?= htmlspecialchars($id) ?>">
+        
         <div class="d-grid mt-4">
           <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
         </div>
@@ -189,3 +213,4 @@ if ($usuario_id > 0) {
 
   <?php include "../includes/rodape.php"; ?>
   
+

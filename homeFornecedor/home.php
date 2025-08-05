@@ -155,6 +155,7 @@ if ($rowUser = mysqli_fetch_assoc($resUsuario)) {
       <div id="dropdown-menu" class="dropdown-content">
         <a href="horario.php">Cadastrar horários</a>
         <a href="../fornecedor/configFornecedor.php">Editar Perfil</a>
+        <a href="../Pagamentos/pagamento.php">Meu Plano</a>
         <a href="../Login/logout.php">Sair</a>
       </div>
     </div>

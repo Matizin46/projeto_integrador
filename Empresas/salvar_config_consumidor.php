@@ -7,7 +7,6 @@ $usuario_id = $_SESSION['id_usuario'] ?? 0;
 // Verifica se está logado
 if (!$usuario_id) {
     $_SESSION['msg'] = "Usuário não autenticado.";
-    header("Location: UserConfig_Consumidor.php");
     exit;
 }
 
@@ -60,5 +59,4 @@ if ($stmt->execute()) {
 $stmt->close();
 $conexao->close();
 
-header("Location: UserConfig_Consumidor.php");
 exit;

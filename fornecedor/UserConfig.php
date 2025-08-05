@@ -2,27 +2,24 @@
 session_start();
 include "../conexao.php";
 
-$id_tipo_usuario = $_SESSION['id_tipo_usuario'] ?? 0;
-$nome = $cpf = $email = $endereco = $telefone = "";
-$msg = $_SESSION['msg'] ?? null;
-unset($_SESSION['msg']);
+// Pega os dados do usuário logado
+$id = $_SESSION['usuario_id'];
+$nome = "";
+$email = "";
+$cpf = "";
+$endereco = "";
+$telefone = "";
 
-if ($id_tipo_usuario > 0) {
-  $stmt = $conexao->prepare("SELECT nome, cpf, email, endereco, telefone FROM usuarios WHERE id = ?");
-  $stmt->bind_param("i", $usuario_id);
-  $stmt->execute();
-  $resultado = $stmt->get_result();
+$sql = "SELECT * FROM usuarios WHERE id = $id";
+$resultado = mysqli_query($conexao, $sql);
 
-  if ($resultado->num_rows > 0) {
-    $usuario = $resultado->fetch_assoc();
-    $nome = $usuario['nome'];
-    $cpf = $usuario['cpf'];
-    $email = $usuario['email'];
-    $endereco = $usuario['endereco'];
-    $telefone = $usuario['telefone'];
-  }
-
-  $stmt->close();
+while ($linha = mysqli_fetch_assoc($resultado)) {
+  $id = $linha['id'];
+  $nome = $linha['nome'];
+  $email = $linha['email'];
+  $cpf = $linha['cpf'];
+  $endereco = $linha['endereco'];
+  $telefone = $linha['telefone'];
 }
 ?>
 <!DOCTYPE html>
@@ -107,59 +104,63 @@ if ($id_tipo_usuario > 0) {
     }
     .sucesso { background-color: #d4edda; color: #155724; }
     .erro    { background-color: #f8d7da; color: #721c24; }
-    
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <h3>Editar Cadastro</h3>
-    <div class="voltar" onclick="window.history.back();">← Voltar</div>
+<div class="top-bar">
+  <h3>Editar Cadastro</h3>
+  <div class="voltar" onclick="window.history.back();">← Voltar</div>
+</div>
+
+<div class="container">
+  <div class="config-box">
+    <h2>Atualize seus dados</h2>
+
+    <!-- ✅ MENSAGEM DE SUCESSO OU ERRO -->
+    <?php
+    if (isset($_SESSION['mensagem'])) {
+      if ($_SESSION['mensagem'] == 'sucesso') {
+        echo "<div class='mensagem sucesso'>✅ Dados salvos com sucesso!</div>";
+      } elseif ($_SESSION['mensagem'] == 'erro') {
+        echo "<div class='mensagem erro'>❌ Erro ao salvar os dados. Tente novamente.</div>";
+      }
+      unset($_SESSION['mensagem']);
+    }
+    ?>
+
+    <form action="../fornecedor/salvar_config_fornecedor.php" method="post">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
+      </div>
+      <div class="mb-3">
+        <label for="cpf" class="form-label">CPF:</label>
+        <input type="text" class="form-control" name="cpf" id="cpf" value="<?= htmlspecialchars($cpf) ?>" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail:</label>
+        <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($email) ?>" required>
+      </div>
+      <div class="mb-3">
+        <label for="senha" class="form-label">Nova senha:</label>
+        <input type="password" class="form-control" name="senha" id="senha" placeholder="Deixe em branco para manter">
+      </div>
+      <div class="mb-3">
+        <label for="endereco" class="form-label">Endereço:</label>
+        <input type="text" class="form-control" name="endereco" id="endereco" value="<?= htmlspecialchars($endereco) ?>">
+      </div>
+      <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone:</label>
+        <input type="text" class="form-control" name="telefone" id="telefone" value="<?= htmlspecialchars($telefone) ?>">
+      </div>
+      <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <div class="container">
-    <div class="config-box">
-      <h2>Atualize seus dados</h2>
-
-      <?php if ($msg): ?>
-        <div class="mensagem <?= str_contains($msg, 'sucesso') ? 'sucesso' : 'erro' ?>">
-          <?= $msg ?>
-        </div>
-      <?php endif; ?>
-
-      <form action="../fornecedor/salvar_config_fornecedor.php" method="post">
-
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome:</label>
-          <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
-        </div>
-        <div class="mb-3">
-          <label for="cpf" class="form-label">CPF:</label>
-          <input type="text" class="form-control" name="cpf" id="cpf" value="<?= htmlspecialchars($cpf) ?>" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">E-mail:</label>
-          <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($email) ?>" required>
-        </div>
-        <div class="mb-3">
-          <label for="senha" class="form-label">Nova senha:</label>
-          <input type="password" class="form-control" name="senha" id="senha" placeholder="Deixe em branco para manter">
-        </div>
-        <div class="mb-3">
-          <label for="endereco" class="form-label">Endereço:</label>
-          <input type="text" class="form-control" name="endereco" id="endereco" value="<?= htmlspecialchars($endereco) ?>">
-        </div>
-        <div class="mb-3">
-          <label for="telefone" class="form-label">Telefone:</label>
-          <input type="text" class="form-control" name="telefone" id="telefone" value="<?= htmlspecialchars($telefone) ?>">
-        </div>
-        <div class="d-grid mt-4">
-          <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
-        </div>
-      </form>
-
-      
-    </div>
-  </div>
-
-  
+</body>
+</html>

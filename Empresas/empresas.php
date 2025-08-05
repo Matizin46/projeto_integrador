@@ -3,15 +3,31 @@ session_start();
 include "../conexao.php";
 
 $nomeUsuario = "";
+$tipoUsuario = "";
+$tipoUsuarioId = null; // novo
 
-if (isset($_SESSION['id_usuario'])) {
-  $id = intval($_SESSION['id_usuario']);
-  $stmt = $conexao->prepare("SELECT nome FROM usuarios WHERE id = ?");
+// ✅ Verifica se o usuário está logado
+if (isset($_SESSION['usuario_id'])) {
+  $id = intval($_SESSION['usuario_id']);
+
+  $stmt = $conexao->prepare("
+    SELECT u.nome, u.id_tipo_usuario, t.descricao 
+    FROM usuarios u 
+    INNER JOIN tipo_usuario t ON u.id_tipo_usuario = t.id 
+    WHERE u.id = ?
+  ");
   $stmt->bind_param("i", $id);
   $stmt->execute();
-  $stmt->bind_result($nomeUsuario);
+  $stmt->bind_result($nomeUsuario, $tipoUsuarioId, $tipoUsuario);
   $stmt->fetch();
   $stmt->close();
+
+  // ✅ (Opcional) Restringe acesso a consumidores
+  if ($tipoUsuarioId != 2) {
+    die("Acesso restrito a consumidores.");
+  }
+} else {
+  die("Acesso não autorizado.");
 }
 ?>
 <!DOCTYPE html>

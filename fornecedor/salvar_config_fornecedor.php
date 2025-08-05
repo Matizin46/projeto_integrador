@@ -1,43 +1,41 @@
 <?php
 session_start();
+include "../conexao.php";
 
-if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] != 1) {
-    die("Acesso negado.");
-}
+$id = (int) $_POST['id'];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$cpf = $_POST['cpf'];
+$endereco = $_POST['endereco'];
+$telefone = $_POST['telefone'];
 
-$conn = new mysqli('localhost', 'root', '12345678', 'bd_estetique');
+$sql = "UPDATE usuarios 
+        SET nome = '$nome', email = '$email', cpf = '$cpf', endereco = '$endereco', telefone = '$telefone' 
+        WHERE id = $id";
 
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+$resultado = mysqli_query($conexao, $sql);
+mysqli_close($conexao);
 
-$campos = ['nome', 'cpf', 'email', 'senha', 'endereco', 'telefone'];
-$updates = $params = [];
-$tipos = '';
-
-foreach ($campos as $campo) {
-    if (!empty($_POST[$campo])) {
-        $updates[] = "$campo = ?";
-        $params[] = $_POST[$campo];
-        $tipos .= 's';
-    }
-}
-
-if ($updates) {
-    $params[] = $_SESSION['usuario_id']; // ✅ ID do usuário logado
-    $tipos .= 'i';
-
-    $sql = "UPDATE usuarios SET " . implode(', ', $updates) . " WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param($tipos, ...$params);
-    $stmt->execute();
-
-    $_SESSION['mensagem'] = $stmt->affected_rows > 0
-        ? "✅ Dados atualizados com sucesso!"
-        : "⚠️ Nenhuma alteração realizada.";
-} else {
-    $_SESSION['mensagem'] = "⚠️ Nenhum campo preenchido.";
-}
-
-header("Location: UserConfig.php");
-exit;
+// Define o tipo de mensagem (sucesso ou erro)
+$mensagem = $resultado ? 'sucesso' : 'erro';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Salvando...</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<script>
+  Swal.fire({
+    icon: '<?= $mensagem === 'sucesso' ? 'success' : 'error' ?>',
+    title: '<?= $mensagem === 'sucesso' ? 'Dados atualizados com sucesso!' : 'Erro ao atualizar os dados!' ?>',
+    showConfirmButton: false,
+    timer: 2000
+  }).then(() => {
+    window.location.href = "UserConfig.php";
+  });
+</script>
+</body>
+</html>
