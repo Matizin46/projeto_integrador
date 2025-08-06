@@ -7,5 +7,10 @@
             <a href="../contato/contato.php">Contato</a>
             <a href="#">Avaliação</a>
         </div>
+        <div class="tela-completa">
+    <!-- aqui dentro vai seu header, conteúdo, etc -->
+  </div>
+
     </div>
 </footer>
+
