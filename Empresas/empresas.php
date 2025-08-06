@@ -84,6 +84,34 @@ if (isset($_SESSION['usuario_id'])) {
       font-weight: bold;
       font-size: 14px;
     }
+
+    /* Cards de serviços */
+.empresa-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem de capa do serviço */
+.empresa-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Rodapé fixo apenas quando necessário */
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  padding-bottom: 100px;
+}
+
   </style>
 </head>
 
@@ -105,6 +133,7 @@ if (isset($_SESSION['usuario_id'])) {
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="../fornecedor/UserConfig.php">Editar Cadastro</a></li>
+          <li><a class="dropdown-item" href="../fornecedor/UserConfig.php">Meus Agendamentos</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item text-danger" href="../Login/logout.php">Sair</a></li>
         </ul>

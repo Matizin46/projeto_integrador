@@ -46,5 +46,20 @@ $stmt->bind_param("iisssssssd",
     $usuario_id, $servico_id, $tipo, $nome, $numero, $validade, $cvv, $data_pagamento, $status, $valor
 );
 
-echo $stmt->execute() ? "ok" : "Erro ao salvar: " . $stmt->error;
+if ($stmt->execute()) {
+    // Atualiza o agendamento: marca como confirmado e vincula o consumidor
+    $atualizaAgendamento = $conexao->prepare("
+        UPDATE agendamentos 
+        SET status = 'confirmado', consumidor_id = ?
+        WHERE servico_id = ? AND status = 'pendente'
+        ORDER BY data, hora
+        LIMIT 1
+    ");
+    $atualizaAgendamento->bind_param("ii", $usuario_id, $servico_id);
+    $atualizaAgendamento->execute();
+
+    echo "ok";
+} else {
+    echo "Erro ao salvar: " . $stmt->error;
+}
 ?>

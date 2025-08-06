@@ -1,115 +1,83 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff;
-  }
-  
-  .top-bar {
-    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-  }
-  
-  .top-bar h1 {
-    font-size: 24px;
-  }
-  
-  .top-bar input {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    width: 60%;
-  }
-  
-  .categorias {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 10px;
-    background: #f8f8f8;
-  }
-  
-  .categorias button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 20px;
-    background: #ffcc00;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-    white-space: nowrap;
-  }
-  
-  .carrossel {
-    margin: 20px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: #ffeeb0;
-    border-radius: 12px;
-  }
-  
-  .slide {
-    display: none;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .slide.ativo {
-    display: block;
-  }
-  
-  .resultados {
-    padding: 20px;
-  }
-  
-  .resultados h2 {
-    margin-bottom: 20px;
-  }
-  
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .card {
-    flex: 1;
-    min-width: 200px;
-    max-width: 250px;
-    padding: 15px;
-    border-radius: 12px;
-    background: #f3f3f3;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  /* container da busca + engrenagem */
-.search-settings {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 65%;
+/* Garante rolagem correta */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
 }
 
-/* ícone ⚙️ */
-.config-icon {
-  font-size: 20px;
-  text-decoration: none;
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 80px; /* espaço para o rodapé */
+}
+
+.card {
+  width: 260px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem do card */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* Área do conteúdo */
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Botões */
+.btn-agendar,
+.btn-pagamento {
+  background-color: #67086F;
   color: white;
-  background-color: #4F61BD;
-  padding: 8px 12px;
-  border-radius: 8px;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: auto;
+  font-weight: bold;
   transition: background 0.2s ease;
 }
 
-.config-icon:hover {
-  background-color: #ff6600;
+.btn-agendar:hover,
+.btn-pagamento:hover {
+  background-color: #4a044e;
 }
 
-  
+/* Rodapé fixo */
+footer {
+  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+  color: white;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
