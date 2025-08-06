@@ -8,17 +8,26 @@ $email = $_POST['email'];
 $cpf = $_POST['cpf'];
 $endereco = $_POST['endereco'];
 $telefone = $_POST['telefone'];
+$senha = $_POST['senha'];
+$mensagem = 'erro';
 
-$sql = "UPDATE usuarios 
-        SET nome = '$nome', email = '$email', cpf = '$cpf', endereco = '$endereco', telefone = '$telefone' 
-        WHERE id = $id";
+if (!empty($senha)) {
+  $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+  $sql = "UPDATE usuarios SET nome='$nome', email='$email', cpf='$cpf', endereco='$endereco', telefone='$telefone', senha='$senha_hash' WHERE id=$id";
+} else {
+  $sql = "UPDATE usuarios SET nome='$nome', email='$email', cpf='$cpf', endereco='$endereco', telefone='$telefone' WHERE id=$id";
+}
 
-$resultado = mysqli_query($conexao, $sql);
+if (mysqli_query($conexao, $sql)) {
+  $mensagem = 'sucesso';
+}
 mysqli_close($conexao);
 
-// Define o tipo de mensagem (sucesso ou erro)
-$mensagem = $resultado ? 'sucesso' : 'erro';
+// Define redirecionamento conforme tipo de usuário
+$tipo_usuario = $_SESSION['tipo_usuario'];
+$redirect = ($tipo_usuario == 1) ? "../fornecedor/UserConfig.php" : "../Empresas/UserConfig_Consumidor.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,7 +43,7 @@ $mensagem = $resultado ? 'sucesso' : 'erro';
     showConfirmButton: false,
     timer: 2000
   }).then(() => {
-    window.location.href = "UserConfig.php";
+    window.location.href = "<?= $redirect ?>";
   });
 </script>
 </body>

@@ -10,7 +10,6 @@ $cpf = "";
 $endereco = "";
 $telefone = "";
 
-// Dados do usuário
 $sql = "SELECT * FROM usuarios WHERE id = $id";
 $resultado = mysqli_query($conexao, $sql);
 while ($linha = mysqli_fetch_assoc($resultado)) {
@@ -25,7 +24,6 @@ while ($linha = mysqli_fetch_assoc($resultado)) {
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Cadastro - Estetique</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -109,10 +107,7 @@ while ($linha = mysqli_fetch_assoc($resultado)) {
 
 <div class="top-bar">
   <h3>Editar Cadastro</h3>
-  <?php
-  $voltarPagina = ($tipo_usuario == 1) ? "../homeFornecedor/home.php" : "../usuario/homeConsumidor.php";
-  ?>
-  <a class="voltar" href="<?= $voltarPagina ?>">← Voltar</a>
+  <a class="voltar" href="empresas.php">← Voltar</a>
 </div>
 
 <div class="container">
