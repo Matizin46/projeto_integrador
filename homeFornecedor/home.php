@@ -115,7 +115,7 @@ if ($row = mysqli_fetch_assoc($resultado)) {
       <div id="dropdown-menu" class="dropdown-content">
         <a href="horario.php">Cadastrar horários</a>
         <a href="../fornecedor/configFornecedor.php">Editar Perfil</a>
-        <a href="../Pagamentos/pagamento.php">Meu Plano</a>
+        <a href="../Pagamento/pagamento.php">Meu Plano</a>
         <a href="../Login/logout.php">Sair</a>
       </div>
     </div>
