@@ -2,7 +2,7 @@
 session_start();
 include "../conexao.php";
 
-// Verifica se o usuário está logado
+// Verifica login
 if (!isset($_SESSION['usuario_id'])) {
     die("Acesso não autorizado.");
 }
@@ -10,10 +10,13 @@ if (!isset($_SESSION['usuario_id'])) {
 $id = intval($_SESSION['usuario_id']);
 $tipo_usuario = $_SESSION['tipo_usuario'] ?? ''; // 1 = fornecedor, 2 = consumidor
 
+// (Opcional) Restringe a tela apenas para consumidor
+// if ($tipo_usuario != 2) { die("Acesso restrito a consumidores."); }
+
 // Inicializa variáveis
 $nome = $email = $cpf = $endereco = $telefone = "";
 
-// Busca dados do usuário com prepared statement
+// Busca dados do usuário (prepared statement)
 $stmt = $conexao->prepare("SELECT nome, email, cpf, endereco, telefone FROM usuarios WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -37,7 +40,6 @@ $stmt->close();
       display: flex;
       flex-direction: column;
     }
-
     .top-bar {
       background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
       padding: 20px 40px;
@@ -46,13 +48,11 @@ $stmt->close();
       align-items: center;
       flex-direction: row-reverse;
     }
-
     .top-bar h3 {
       color: white;
       font-weight: bold;
       margin: 0;
     }
-
     .voltar {
       background-color: #dc3545;
       color: white;
@@ -65,10 +65,7 @@ $stmt->close();
       transition: background 0.3s;
       cursor: pointer;
     }
-
-    .voltar:hover {
-      background-color: #b02a37;
-    }
+    .voltar:hover { background-color: #b02a37; }
 
     .container {
       padding: 60px 15px 100px 15px;
@@ -77,7 +74,6 @@ $stmt->close();
       justify-content: center;
       align-items: flex-start;
     }
-
     .config-box {
       background: white;
       padding: 30px;
@@ -86,14 +82,12 @@ $stmt->close();
       width: 100%;
       max-width: 550px;
     }
-
     .config-box h2 {
       margin-bottom: 25px;
       font-weight: bold;
       color: #67086F;
       text-align: center;
     }
-
     .btn-salvar {
       background-color: #28a745;
       border: none;
@@ -103,10 +97,7 @@ $stmt->close();
       font-weight: bold;
       border-radius: 6px;
     }
-
-    .btn-salvar:hover {
-      background-color: #218838;
-    }
+    .btn-salvar:hover { background-color: #218838; }
 
     .mensagem {
       padding: 15px;
@@ -115,7 +106,6 @@ $stmt->close();
       text-align: center;
       font-weight: bold;
     }
-
     .sucesso { background-color: #d4edda; color: #155724; }
     .erro    { background-color: #f8d7da; color: #721c24; }
   </style>
@@ -142,7 +132,8 @@ $stmt->close();
       }
       ?>
 
-      <form action="../fornecedor/salvar_config_fornecedor.php" method="post">
+      <!-- IMPORTANTE: consumidor salva no arquivo do consumidor -->
+      <form action="salvar_config_consumidor.php" method="post">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
           <input type="text" class="form-control" name="nome" id="nome" value="<?= htmlspecialchars($nome) ?>" required>
@@ -186,5 +177,3 @@ $stmt->close();
 
 </body>
 </html>
-
-

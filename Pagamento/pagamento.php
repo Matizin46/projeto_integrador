@@ -1,5 +1,8 @@
-<?php include "../includes/cabecalhoconfig.php";?>
 
+
+<?php
+include "../includes/cabecalhoconfig.php";
+?>
 <?php
 session_start();
 include "../conexao.php";

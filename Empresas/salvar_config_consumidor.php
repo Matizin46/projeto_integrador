@@ -41,16 +41,11 @@ if ($id > 0 && $nome !== '' && $email !== '' && $cpf !== '') {
   if ($stmt) { $stmt->close(); }
 }
 
-mysqli_close($conexao);
+$conexao->close();
 
-// Define redirecionamento conforme tipo de usuário
-$tipo_usuario = $_SESSION['tipo_usuario'] ?? null;
-$redirect = ($tipo_usuario == 1)
-  ? "../fornecedor/UserConfig.php"
-  : "../Empresas/UserConfig_Consumidor.php";
-
-// Também grava na sessão para aparecer banner de sucesso/erro na tela de edição
+// volta para a tela do consumidor
 $_SESSION['mensagem'] = $mensagem;
+$redirect = "../Empresas/UserConfig_Consumidor.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
