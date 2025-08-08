@@ -133,7 +133,7 @@ body {
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="UserConfig_Consumidor.php">Editar Cadastro</a></li>
-          <li><a class="dropdown-item" href="../Empresas/empresas.php">Meus Agendamentos</a></li>
+          <li><a class="dropdown-item" href="agendamentos.php">Meus Agendamentos</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item text-danger" href="../Login/logout.php">Sair</a></li>
         </ul>

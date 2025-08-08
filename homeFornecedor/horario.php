@@ -19,14 +19,8 @@ if (!$servico) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Horário</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
+
+ <style>
     html, body {
       height: 100%;
       margin: 0;
@@ -41,13 +35,14 @@ if (!$servico) {
       flex: 1;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
       padding: 40px 15px 80px;
+      max-width: 800px;
+      align-items: center;
+     
     }
 
     .container {
-      max-width: 600px;
-      width: 100%;
+      width: 800px;
       padding: 30px;
       background: #fff;
       border-radius: 15px;
@@ -67,35 +62,64 @@ if (!$servico) {
     .form-label {
       font-weight: bold;
     }
-
-    .voltar {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: #d62828;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-
+    
     footer {
       background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
       color: white;
       padding: 20px;
       text-align: center;
     }
+
+    .top-bar {
+      background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+    .top-bar h3 {
+      color: white;
+      font-weight: bold;
+      margin: 0;
+    }
+    .voltar {
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .voltar:hover { background-color: #b02a37; }
+     {
+      padding: 60px 15px 150px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
   </style>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Horário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../configuracao/configuracoes.css" />
+
 </head>
 <body>
 
-  <!-- ✅ Inclui o cabeçalho aqui -->
-  <?php include "../includes/cabecalhoconfig.php"; ?>
-
-  <div class="voltar" onclick="window.history.back();">← Voltar</div>
+    <div class="top-bar">
+      <h3>Editar Cadastro</h3>
+      <a class="voltar" href="../homeFornecedor/home.php">← Voltar</a>
+    </div>
 
   <div class="content">
     <div class="container">

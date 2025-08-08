@@ -115,7 +115,7 @@ if ($row = mysqli_fetch_assoc($resultado)) {
       <div id="dropdown-menu" class="dropdown-content">
         <a href="horario.php">Cadastrar horários</a>
         <a href="../fornecedor/configFornecedor.php">Editar Perfil</a>
-        <a href="../Pagamento/pagamento.php">Meu Plano</a>
+        <a href="../Pagamento/pagamento_fornecedor.php">Meu Plano</a>
         <a href="../Login/logout.php">Sair</a>
       </div>
     </div>
@@ -148,6 +148,7 @@ $sqlAgendamentos = "
   INNER JOIN servicos s ON a.servico_id = s.id
   WHERE s.empresa_id = ?
   AND a.status = 'confirmado'
+  AND a.status = 'cancelado'
   ORDER BY a.data, a.hora
 ";
 

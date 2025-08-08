@@ -44,10 +44,12 @@ $stmt->close();
       background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
+      gap: 620px;
       align-items: center;
       flex-direction: row-reverse;
     }
+    
     .top-bar h3 {
       color: white;
       font-weight: bold;
