@@ -1,95 +1,128 @@
+/* =============================
+   ESTILO GERAL DA PÁGINA
+   ============================= */
+  /* Aplica a Poppins como fonte padrão para todo o site */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;      /* Tamanho base da letra */
+    line-height: 1.6;     /* Espaçamento entre linhas para facilitar leitura */
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    display: flex; /* Ativa layout flexível */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
 }
 
+/* =============================
+   CONTAINER PRINCIPAL DO FORMULÁRIO
+   ============================= */
 .container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    width: 350px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* Fundo branco */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 15px; /* Cantos arredondados */
+    width: 350px; /* Largura fixa do container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para efeito de elevação */
 }
 
+/* =============================
+   TÍTULO DO FORMULÁRIO
+   ============================= */
 h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 20px;
+    text-align: center; /* Centraliza o texto */
+    color: #2c3e50; /* Cor do texto */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    font-size: 20px; /* Tamanho da fonte */
 }
 
-/* Ajuste entre labels e inputs */
+/* =============================
+   ESTILO DAS LABELS DO FORMULÁRIO
+   ============================= */
 form label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #333;
+    display: block; /* Faz a label ocupar a linha inteira */
+    margin-top: 15px; /* Espaço acima da label */
+    margin-bottom: 5px; /* Espaço abaixo da label */
+    font-weight: bold; /* Deixa o texto em negrito */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
 }
 
+/* =============================
+   CAMPOS DE ENTRADA, TEXTAREA E SELECT
+   ============================= */
 form input,
 form textarea,
 form select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
+    width: 100%; /* Largura total do container */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 5px; /* Espaço acima do campo */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 8px; /* Cantos arredondados */
+    box-sizing: border-box; /* Inclui borda no cálculo da largura total */
+    font-size: 14px; /* Tamanho da fonte */
 }
 
+/* =============================
+   BOTÃO DO FORMULÁRIO
+   ============================= */
 form button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #4d5ad4;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+    width: 100%; /* Largura total do container */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 20px; /* Espaço acima do botão */
+    background-color: #4d5ad4; /* Cor de fundo azul */
+    color: white; /* Texto branco */
+    font-weight: bold; /* Texto em negrito */
+    border: none; /* Remove borda padrão */
+    border-radius: 20px; /* Bordas arredondadas */
+    cursor: pointer; /* Mostra o cursor de clique */
+    transition: 0.3s; /* Transição suave em efeitos */
 }
 
+/* =============================
+   EFEITO HOVER NO BOTÃO
+   ============================= */
 form button:hover {
-    background-color: #3949ab;
+    background-color: #3949ab; /* Azul mais escuro ao passar o mouse */
 }
 
+/* =============================
+   ÁREA DE MENSAGENS (SUCESSO/ERRO)
+   ============================= */
 #mensagem {
-    margin-top: 15px;
-    text-align: center;
-    font-weight: bold;
+    margin-top: 15px; /* Espaço acima do texto */
+    text-align: center; /* Centraliza o texto */
+    font-weight: bold; /* Deixa o texto em negrito */
 }
 
+/* =============================
+   BOTÃO/VOLTA FIXO NA TELA
+   ============================= */
 .voltar{
-    position: fixed;
-    top:10px;
-    left:20px;
-    background-color: #d62828;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s;
-    z-index: 1000;
-    text-decoration: none;
-  }
-
-.voltar:hover {
-    background-color: #a31c1c;
+    position: fixed; /* Fixa o botão na tela */
+    top:10px; /* Distância do topo */
+    left:20px; /* Distância da esquerda */
+    background-color: #d62828; /* Vermelho */
+    color: white; /* Texto branco */
+    padding: 12px 20px; /* Espaçamento interno (vertical/horizontal) */
+    border-radius: 30px; /* Bordas arredondadas (formato de pílula) */
+    font-size: 16px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Mostra o cursor de clique */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra para destaque */
+    transition: background-color 0.3s; /* Transição suave da cor */
+    z-index: 1000; /* Garante que fica por cima de outros elementos */
+    text-decoration: none; /* Remove sublinhado do link */
 }
 
+/* =============================
+   EFEITO HOVER NO BOTÃO VOLTAR
+   ============================= */
+.voltar:hover {
+    background-color: #a31c1c; /* Vermelho mais escuro ao passar o mouse */
+}
+
+/* =============================
+   ESCONDE O CONTEÚDO VAZIO
+   ============================= */
 #conteudo-dinamico:empty {
-    display: none;
-  }
+    display: none; /* Não exibe se estiver vazio */
+}
+

@@ -1,8 +1,12 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-  }
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5); /* Degradê igual ao fornecedor */
+}
+
   
   .cadastro-consumidor {
     display: flex;

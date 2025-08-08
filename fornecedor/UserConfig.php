@@ -2,19 +2,24 @@
 session_start();
 include "../conexao.php";
 
-// Verifica login
+// ✅ Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
   die("Acesso não autorizado.");
 }
 
+// 🔹 Pega o ID e tipo de usuário da sessão
 $id           = (int) $_SESSION['usuario_id'];
 $tipo_usuario = $_SESSION['tipo_usuario'] ?? 1; // 1 = fornecedor, 2 = consumidor
 
-// Inicializa variáveis
+// 🔹 Inicializa variáveis para evitar erros de variáveis indefinidas
 $nome = $email = $cpf = $endereco = $telefone = "";
 
-// Busca dados do usuário (prepared)
-$stmt = $conexao->prepare("SELECT nome, email, cpf, endereco, telefone FROM usuarios WHERE id = ?");
+// 🔹 Busca os dados do usuário com prepared statement
+$stmt = $conexao->prepare("
+  SELECT nome, email, cpf, endereco, telefone 
+  FROM usuarios 
+  WHERE id = ?
+");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt->bind_result($nome, $email, $cpf, $endereco, $telefone);
@@ -104,7 +109,8 @@ $stmt->close();
 <body>
   <div class="top-bar">
     <h3>Editar Cadastro</h3>
-    <a class="voltar" href="../homeFornecedor/home.php">← Voltar</a>
+    <!-- 🔹 Botão voltar ajustado conforme tipo de usuário -->
+    <a class="voltar" href="<?= $tipo_usuario == 1 ? '../homeFornecedor/home.php' : '../empresas.php' ?>">← Voltar</a>
   </div>
 
   <div class="container">
@@ -112,6 +118,7 @@ $stmt->close();
       <h2>Atualize seus dados</h2>
 
       <?php
+        // 🔹 Exibe mensagens de sucesso ou erro vindas da sessão
         if (isset($_SESSION['mensagem'])) {
           if ($_SESSION['mensagem'] == 'sucesso') {
             echo "<div class='mensagem sucesso'>✅ Dados salvos com sucesso!</div>";
@@ -122,6 +129,7 @@ $stmt->close();
         }
       ?>
 
+      <!-- 🔹 Formulário para atualizar dados -->
       <form action="../fornecedor/salvar_config_fornecedor.php" method="post">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
@@ -153,6 +161,7 @@ $stmt->close();
           <input type="text" class="form-control" name="telefone" id="telefone" value="<?= htmlspecialchars($telefone) ?>">
         </div>
 
+        <!-- 🔹 Campo oculto com ID do usuário -->
         <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
 
         <div class="d-grid mt-4">

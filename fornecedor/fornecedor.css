@@ -1,77 +1,86 @@
+/* Remove as margens padrão e define a fonte padrão do sistema Windows */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-  }
-  
-  .cadastro-fornecedor {
-    background-image: url('../imagens/fundo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .form-container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif; /* Fonte padrão que você já utiliza */
+    background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5); /* Degradê nas cores da identidade visual */
+}
+
+/* Área principal da página de cadastro do fornecedor */
+.cadastro-fornecedor {
+    background-image: url('../imagens/fundo.png'); /* Imagem de fundo */
+    background-size: cover; /* A imagem cobre toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    min-height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex; /* Ativa flexbox */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+}
+
+/* Container do formulário */
+.form-container {
+    background: rgba(255, 255, 255, 0.95); /* Fundo branco levemente transparente */
+    padding: 40px 30px; /* Espaçamento interno */
+    border-radius: 16px; /* Cantos arredondados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
     width: 100%;
-    max-width: 400px;
-  }
-  
-  .form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2752c9;
-  }
-  
-  form {
+    max-width: 400px; /* Limita largura máxima */
+}
+
+/* Título do formulário */
+.form-container h2 {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: #2752c9; /* Cor azul */
+}
+
+/* Formulário com layout em coluna */
+form {
     display: flex;
-    flex-direction: column;
-  }
-  
-  form input {
-    margin-bottom: 15px;
+    flex-direction: column; /* Campos empilhados verticalmente */
+}
+
+/* Campos de texto do formulário */
+form input {
+    margin-bottom: 15px; /* Espaço entre os campos */
+    padding: 12px; /* Altura e largura internas */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    font-size: 15px; /* Tamanho da fonte */
+}
+
+/* Botão principal do formulário */
+form button {
     padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-  }
-  
-  form button {
-    padding: 12px;
-    background: #4F61BD;
-    color: white;
-    border: none;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-  }
-  
-  form button:hover {
-    opacity: 0.9;
-  }
-  
-  .voltar{
-    position: fixed;
-    top:10px;
-    left:20px;
-    background-color: #d62828;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s;
-    z-index: 1000;
-    text-decoration: none;
-  }
+    background: #4F61BD; /* Azul principal */
+    color: white; /* Texto branco */
+    border: none; /* Remove borda padrão */
+    font-weight: bold; /* Texto em negrito */
+    border-radius: 30px; /* Borda totalmente arredondada */
+    cursor: pointer; /* Cursor de mão */
+    font-size: 16px; /* Tamanho do texto */
+    transition: 0.3s; /* Animação suave no hover */
+}
+
+/* Efeito ao passar o mouse no botão */
+form button:hover {
+    opacity: 0.9; /* Leve transparência */
+}
+
+/* Botão "Voltar" fixo no canto superior esquerdo */
+.voltar {
+    position: fixed; /* Fica fixo mesmo ao rolar a página */
+    top: 10px;
+    left: 20px;
+    background-color: #d62828; /* Vermelho */
+    color: white; /* Texto branco */
+    padding: 12px 20px; /* Espaçamento interno */
+    border-radius: 30px; /* Borda arredondada */
+    font-size: 16px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Cursor de mão */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra */
+    transition: background-color 0.3s; /* Transição suave */
+    z-index: 1000; /* Fica acima de outros elementos */
+    text-decoration: none; /* Remove sublinhado de link */
+}

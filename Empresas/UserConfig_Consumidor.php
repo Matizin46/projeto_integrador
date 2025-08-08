@@ -1,22 +1,25 @@
 <?php
+// Inicia a sessão para acessar variáveis de sessão
 session_start();
+
+// Inclui a conexão com o banco de dados
 include "../conexao.php";
 
-// Verifica login
+// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     die("Acesso não autorizado.");
 }
 
+// Pega o ID do usuário logado
 $id = intval($_SESSION['usuario_id']);
-$tipo_usuario = $_SESSION['tipo_usuario'] ?? ''; // 1 = fornecedor, 2 = consumidor
 
-// (Opcional) Restringe a tela apenas para consumidor
-// if ($tipo_usuario != 2) { die("Acesso restrito a consumidores."); }
+// Captura o tipo de usuário (1 = fornecedor, 2 = consumidor)
+$tipo_usuario = $_SESSION['tipo_usuario'] ?? '';
 
-// Inicializa variáveis
+// Inicializa variáveis para armazenar dados do usuário
 $nome = $email = $cpf = $endereco = $telefone = "";
 
-// Busca dados do usuário (prepared statement)
+// Busca os dados do usuário no banco
 $stmt = $conexao->prepare("SELECT nome, email, cpf, endereco, telefone FROM usuarios WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -30,16 +33,26 @@ $stmt->close();
   <meta charset="UTF-8" />
   <title>Editar Cadastro - Estetique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Bootstrap para estilos e responsividade -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- SweetAlert para mensagens de alerta -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Fonte Poppins para manter padrão visual -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       background-color: #fef0fb;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif; /* Fonte padrão do projeto */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
+
+    /* Barra superior com título e botão de voltar */
     .top-bar {
       background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
       padding: 20px 40px;
@@ -49,12 +62,13 @@ $stmt->close();
       align-items: center;
       flex-direction: row-reverse;
     }
-    
     .top-bar h3 {
       color: white;
       font-weight: bold;
       margin: 0;
     }
+
+    /* Botão de voltar */
     .voltar {
       background-color: #dc3545;
       color: white;
@@ -69,6 +83,7 @@ $stmt->close();
     }
     .voltar:hover { background-color: #b02a37; }
 
+    /* Área principal centralizada */
     .container {
       padding: 60px 15px 100px 15px;
       flex: 1;
@@ -76,6 +91,8 @@ $stmt->close();
       justify-content: center;
       align-items: flex-start;
     }
+
+    /* Caixa de configurações */
     .config-box {
       background: white;
       padding: 30px;
@@ -90,6 +107,8 @@ $stmt->close();
       color: #67086F;
       text-align: center;
     }
+
+    /* Botão de salvar */
     .btn-salvar {
       background-color: #28a745;
       border: none;
@@ -101,6 +120,7 @@ $stmt->close();
     }
     .btn-salvar:hover { background-color: #218838; }
 
+    /* Mensagens de retorno */
     .mensagem {
       padding: 15px;
       border-radius: 6px;
@@ -114,27 +134,31 @@ $stmt->close();
 </head>
 <body>
 
+  <!-- Cabeçalho com título e botão voltar -->
   <div class="top-bar">
     <h3>Editar Cadastro</h3>
     <a class="voltar" href="empresas.php">← Voltar</a>
   </div>
 
+  <!-- Conteúdo principal -->
   <div class="container">
     <div class="config-box">
       <h2>Atualize seus dados</h2>
 
       <?php
+      // Exibe mensagens de sucesso ou erro vindas da sessão
       if (isset($_SESSION['mensagem'])) {
         if ($_SESSION['mensagem'] == 'sucesso') {
           echo "<div class='mensagem sucesso'>✅ Dados salvos com sucesso!</div>";
         } elseif ($_SESSION['mensagem'] == 'erro') {
           echo "<div class='mensagem erro'>❌ Erro ao salvar os dados. Tente novamente.</div>";
         }
-        unset($_SESSION['mensagem']);
+        unset($_SESSION['mensagem']); // Remove a mensagem após exibir
       }
       ?>
 
-      <!-- IMPORTANTE: consumidor salva no arquivo do consumidor -->
+      <!-- Formulário para edição de dados -->
+      <!-- Importante: Consumidor salva no arquivo salvar_config_consumidor.php -->
       <form action="salvar_config_consumidor.php" method="post">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
@@ -166,8 +190,10 @@ $stmt->close();
           <input type="text" class="form-control" name="telefone" id="telefone" value="<?= htmlspecialchars($telefone) ?>">
         </div>
 
+        <!-- ID do usuário oculto para identificar no update -->
         <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
 
+        <!-- Botão de envio -->
         <div class="d-grid mt-4">
           <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
         </div>
@@ -175,6 +201,7 @@ $stmt->close();
     </div>
   </div>
 
+  <!-- Rodapé -->
   <?php include "../includes/rodape.php"; ?>
 
 </body>

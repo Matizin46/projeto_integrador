@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <head>
     <!-- Define o conjunto de caracteres da página para suportar acentuação e símbolos -->
     <meta charset="UTF-8">

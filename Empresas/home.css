@@ -1,83 +1,190 @@
-/* Garante rolagem correta */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-y: auto;
-  font-family: 'Segoe UI', sans-serif;
-  background: #fff;
+/* =============================
+   Fonte global (Poppins)
+   — mantém o padrão que já estamos usando
+   ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding-bottom: 80px; /* espaço para o rodapé */
-}
-
-.card {
-  width: 260px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Imagem do card */
-.card img {
+/* =============================
+   Carrossel (container)
+   ============================= */
+.carousel {
+  position: relative;           /* base p/ posicionar setas/indicadores se quiser */
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  max-width: 1200px;            /* ajuste livre */
+  margin: 0 auto;
+  overflow: hidden;             /* esconde sobra de slides */
+  aspect-ratio: 16 / 9;         /* altura responsiva (pode trocar p/ 3/1, 4/3, etc.) */
+  background: #0000000a;        /* fallback neutro se a imagem demorar */
 }
 
-/* Área do conteúdo */
-.card-body {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.card-text {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-/* Botões */
-.btn-agendar,
-.btn-pagamento {
-  background-color: #67086F;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px;
-  margin-top: auto;
-  font-weight: bold;
-  transition: background 0.2s ease;
-}
-
-.btn-agendar:hover,
-.btn-pagamento:hover {
-  background-color: #4a044e;
-}
-
-/* Rodapé fixo */
-footer {
-  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-  color: white;
-  padding: 20px;
+/* Onde os slides ficam */
+.slides {
   position: relative;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* =============================
+   Slide individual (efeito fade)
+   ============================= */
+.slide {
+  position: absolute;
+  inset: 0;                     /* top/right/bottom/left: 0 */
+  opacity: 0;                   /* inicia invisível */
+  transition: opacity .6s ease; /* transição suave */
+  pointer-events: none;         /* evitar cliques quando oculto */
+  display: flex;                /* opcional: p/ centralizar conteúdo */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagens dentro do slide */
+.slide img,
+.slide picture,
+.slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* cobre sem distorcer */
+}
+
+/* Texto sobre o slide (opcional) */
+.slide .caption {
+  position: absolute;
+  bottom: 6%;
+  left: 5%;
+  right: 5%;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+  line-height: 1.4;
+}
+
+/* Slide visível */
+.slide.ativo {
+  opacity: 1;
+  pointer-events: auto;         /* habilita interação no slide ativo */
+}
+
+/* =============================
+   Indicadores (bolinhas) – opcional
+   ============================= */
+.carousel-indicators {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.carousel-indicators button.is-active {
+  background: rgba(255,255,255,.95);
+  transform: scale(1.12);
+}
+
+/* =============================
+   Controles (setas) – opcional
+   ============================= */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .08s ease;
+}
+
+.carousel-control:hover { background: rgba(0,0,0,.5); }
+.carousel-control:active { transform: translateY(-50%) scale(.98); }
+
+.carousel-control.prev { left: 10px; }
+.carousel-control.next { right: 10px; }
+
+/* =============================
+   Acessibilidade / Redução de movimento
+   ============================= */
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: none; }
+}
+
+.titulo-servicos {
+    text-align: center;       /* Centraliza o texto */
+    margin: 0 auto;           /* Remove margens laterais desnecessárias */
+    display: block;           /* Garante que ocupe a linha inteira */
+
+}
+
+.header-servicos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.header-servicos h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    
+}
+
+/* Header com 3 colunas: [esquerda] [CENTRO] [direita] */
+.header-servicos {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  max-width: 1200px; /* mesmo valor do container dos cards */
+  margin: 0 auto;    /* centraliza o bloco na tela */
+  padding-left: 15px; /* mesmo espaçamento lateral dos cards */
+  padding-right: 15px;
+}
+
+.header-servicos h1 {
+  grid-column: 1 / -1; /* faz o título ocupar toda a largura do container */
+  text-align: left;    /* agora ele alinha com o início dos cards */
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4); /* sombra no título */
+}
+
+
+/* Agrupamentos laterais ficam nas pontas */
+.header-servicos .lado-esquerdo { grid-column: 1; }
+.header-servicos .lado-direito  { grid-column: 3; justify-self: end; }
+
+/* Responsivo: em telas pequenas, empilha e centraliza tudo */
+@media (max-width: 576px) {
+  .header-servicos {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    text-align: center;
+  }
+  .header-servicos h1 { grid-column: 1; }
+  .header-servicos .lado-direito { justify-self: center; width: 100%; }
+  .header-servicos .lado-direito .input-group { max-width: 420px; margin: 0 auto; }
 }

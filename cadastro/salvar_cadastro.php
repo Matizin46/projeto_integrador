@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $empresa_id = $_SESSION['usuario_id'];
 
@@ -50,4 +51,5 @@ exit;
     }
   });
 </script>
+
 

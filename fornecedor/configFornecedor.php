@@ -7,9 +7,6 @@
   include "../fornecedor/UserConfig.php"
   ?>
 
-
-
-
 </body>
 
 </html>
