@@ -66,6 +66,8 @@ $stmt->close();
       color: white;
       font-weight: bold;
       margin: 0;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.4); /* sombra suave preta */
+
     }
 
     /* Botão de voltar */

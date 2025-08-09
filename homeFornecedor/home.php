@@ -65,7 +65,13 @@ if ($row = mysqli_fetch_assoc($resultado)) {
 
   <style>
     /* Fonte global + cor de fundo padrão */
-    body { margin: 0; font-family: 'Poppins', sans-serif; background: #FFF; }
+    body { 
+      margin: 0; 
+      font-family: 'Poppins', sans-serif;  
+      background-color: #fdeefc; /* tom rosa bem claro */
+    
+    
+    }
 
     /* Degradê institucional */
     .bg-gradient { background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5) !important; }

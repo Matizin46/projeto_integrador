@@ -57,6 +57,7 @@ if (isset($_SESSION['usuario_id'])) {
       font-family: 'Poppins', sans-serif; /* Padrão do projeto */
       min-height: 100vh;
       overflow-x: hidden;
+      background-color: #fdeefc; /* tom rosa bem claro */
     }
 
     /* =============== Cabeçalho com título centralizado =============== */

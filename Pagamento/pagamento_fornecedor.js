@@ -1,9 +1,12 @@
-// Render inicial
+// ======================================================
+// 1) Quando a página carregar (DOM totalmente montado)
+// ======================================================
 window.addEventListener("DOMContentLoaded", () => {
-  // Se não tem plano ativo, já mostra o modal explicativo
+  // Se NÃO existe um plano ativo para o usuário
   if (!TEM_PLANO_ATIVO) {
+    // Exibe um modal usando SweetAlert2 com as informações do plano
     Swal.fire({
-      title: `Plano ${PLANO_NOME}`,
+      title: `Plano ${PLANO_NOME}`, // Título com o nome do plano
       html: `
         <div style="text-align:left">
           <p style="margin:.25rem 0"><b>Descrição:</b> ${PLANO_DESC}</p>
@@ -13,24 +16,30 @@ window.addEventListener("DOMContentLoaded", () => {
           </p>
         </div>
       `,
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonText: 'Pagar agora',
-      cancelButtonText: 'Depois',
-      confirmButtonColor: '#67086F'
+      icon: 'info', // Ícone informativo
+      showCancelButton: true, // Botão "Cancelar"
+      confirmButtonText: 'Pagar agora', // Texto do botão confirmar
+      cancelButtonText: 'Depois', // Texto do botão cancelar
+      confirmButtonColor: '#67086F' // Cor do botão confirmar
     }).then((res) => {
+      // Se o usuário clicar em "Pagar agora"
       if (res.isConfirmed) {
-        mostrarConteudo();
-        mostrarFormularioCartao('Crédito');
+        mostrarConteudo(); // Mostra os métodos de pagamento
+        mostrarFormularioCartao('Crédito'); // Já abre o formulário de cartão de crédito
       } else {
+        // Caso escolha "Depois", apenas exibe os métodos de pagamento
         mostrarConteudo();
       }
     });
   } else {
+    // Se já tem plano ativo, apenas mostra o conteúdo
     mostrarConteudo();
   }
 });
 
+// ======================================================
+// 2) Função para renderizar as opções de pagamento
+// ======================================================
 function mostrarConteudo() {
   const container = document.getElementById("conteudo-dinamico");
   container.innerHTML = `
@@ -47,6 +56,9 @@ function mostrarConteudo() {
   `;
 }
 
+// ======================================================
+// 3) Função para exibir o formulário de cartão
+// ======================================================
 function mostrarFormularioCartao(tipo) {
   const detalhes = document.getElementById("detalhes-pagamento");
   detalhes.innerHTML = `
@@ -72,10 +84,13 @@ function mostrarFormularioCartao(tipo) {
   `;
 }
 
+// ======================================================
+// 4) Função para enviar os dados do pagamento
+// ======================================================
 function enviarPagamentoCartao(e, tipo_pagamento) {
-  e.preventDefault();
+  e.preventDefault(); // Evita recarregar a página no envio do formulário
 
-  // Garantia: esta tela é SÓ fornecedor (tipoUsuario = 1)
+  // Garantia: esta tela deve ser acessada apenas por fornecedores
   if (typeof tipoUsuario === "undefined" || tipoUsuario !== 1) {
     return Swal.fire("Erro!", "Tipo de usuário inválido nesta tela.", "error");
   }
@@ -83,33 +98,34 @@ function enviarPagamentoCartao(e, tipo_pagamento) {
   const form = e.target;
   const dados = new FormData();
 
-  // Sem depender de parâmetros na URL:
-  // Mandamos o PLANO_ID pelo POST (ou o PHP pode usar fallback = 1)
+  // Envia o ID do plano (se definido no PHP)
   if (typeof PLANO_ID !== "undefined") {
     dados.append("plano_id", String(PLANO_ID));
   }
-  // Valor numérico vem do PHP; se o seu confirmar_pagamento_fornecedor não usar,
-  // pode ignorar. Mas é útil para logs/validação.
+
+  // Envia o valor numérico do plano (se definido no PHP) - útil para logs e validação
   if (typeof PLANO_PRECO_NUM !== "undefined") {
-    dados.append("valor", String(PLANO_PRECO_NUM)); // "20.00"
+    dados.append("valor", String(PLANO_PRECO_NUM)); // Exemplo: "20.00"
   }
 
+  // Adiciona os campos do formulário
   dados.append("tipo_pagamento", tipo_pagamento);
   dados.append("nome_cartao", form.nome_cartao.value.trim());
   dados.append("numero_cartao", form.numero_cartao.value.trim());
   dados.append("validade_cartao", form.validade_cartao.value);
   dados.append("cvv", form.cvv.value.trim());
 
+  // Envia via fetch para o endpoint do servidor
   fetch(ENDPOINT_FORNECEDOR, {
     method: "POST",
     body: dados
   })
-  .then(res => res.text())
+  .then(res => res.text()) // Lê resposta como texto
   .then(resposta => {
     console.log("Resposta do PHP:", resposta);
     if (resposta.trim() === "ok") {
       Swal.fire("Sucesso!", "Pagamento realizado com sucesso.", "success");
-      form.reset();
+      form.reset(); // Limpa formulário
     } else {
       Swal.fire("Erro!", resposta, "error");
     }

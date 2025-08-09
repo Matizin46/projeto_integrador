@@ -55,7 +55,7 @@ function fmtHora($h) { return $h ? substr($h, 0, 5) : ''; }
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Poppins', sans-serif; background: #f8f9fa; }
+    body { font-family: 'Poppins', sans-serif; background-color: #fdeefc; /* tom rosa bem claro */ }
 
     /* ===== Cabeçalho no padrão "Editar Cadastro" ===== */
     .top-bar {
@@ -68,7 +68,8 @@ function fmtHora($h) { return $h ? substr($h, 0, 5) : ''; }
     align-items: center;
     flex-direction: row-reverse;
     }
-    .top-bar h3 { color: white; font-weight: bold; margin: 0; font-size: 28px; }
+    .top-bar h3 { color: white; font-weight: bold; margin: 0; font-size: 28px;   text-shadow: 2px 2px 6px rgba(0,0,0,0.4); /* sombra suave preta */
+}
     .voltar { background-color: #dc3545; color: white; padding: 10px 25px; text-decoration: none;
     
     }
@@ -109,7 +110,7 @@ function fmtHora($h) { return $h ? substr($h, 0, 5) : ''; }
 
   <!-- ===== Cabeçalho com degradê + voltar à esquerda + título central ===== -->
   <div class="top-bar">
-    <h3>Editar Cadastro</h3>
+    <h3>Meus Agendamentos</h3>
     <a class="voltar" href="empresas.php">← Voltar</a>
   </div>
   

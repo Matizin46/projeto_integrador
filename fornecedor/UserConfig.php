@@ -36,35 +36,50 @@ $stmt->close();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     body {
-      background-color: #fef0fb;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .top-bar {
-      background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row-reverse;
-    }
-    .top-bar h3 {
-      color: white;
-      font-weight: bold;
-      margin: 0;
-    }
-    .voltar {
-      background-color: #dc3545;
-      color: white;
-      padding: 10px 25px;
-      text-decoration: none;
-      border-radius: 40px;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-    .voltar:hover { background-color: #b02a37; }
+  font-family: 'Poppins', sans-serif; /* mesma letra usada no restante do site */
+  background-color: #fdeefc; /* tom rosa bem claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Cabeçalho com título central e botão voltar à esquerda ===== */
+.top-bar {
+  background: linear-gradient(to right, #67086F, #ca5fb3, #C50FD5);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center; /* centraliza o título */
+  align-items: center;
+  position: relative; /* permite posicionar o botão de forma independente */
+}
+
+.top-bar h3 {
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  font-size: 28px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* sombra no texto */
+}
+
+/* Botão voltar fixo à esquerda */
+.voltar {
+  position: absolute;
+  left: 20px;
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 25px;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.voltar:hover {
+  background-color: #b02a37;
+}
+
     .container {
       padding: 60px 15px 150px 15px;
       display: flex;
